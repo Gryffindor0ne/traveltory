@@ -1,6 +1,6 @@
 import { useAppDispatch } from "../hooks";
 import { useEffect, useState } from "react";
-import { setLoginState } from "../userSlice";
+import { setLoginState, setNaverLoginState } from "../userSlice";
 import { useNavigate } from "react-router-dom";
 
 declare global {
@@ -29,7 +29,7 @@ const Naver = () => {
       if (status) {
         setUser({ ...naverLogin.user });
         dispatch(setLoginState(true));
-
+        dispatch(setNaverLoginState(true));
         navigate("/");
         window.close();
       }
