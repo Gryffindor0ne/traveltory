@@ -6,6 +6,7 @@ import {
 } from "firebase/auth";
 
 import { authService } from "@apis/f-base";
+import Naver from "@components/naverLogin";
 
 const Auth = () => {
   const onSocialClick = async (e: React.MouseEvent<HTMLElement>) => {
@@ -28,6 +29,7 @@ const Auth = () => {
       <button onClick={onSocialClick} name="facebook">
         Facebook Login
       </button>
+      <Naver />
     </div>
   );
 };
