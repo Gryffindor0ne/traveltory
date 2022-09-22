@@ -1,4 +1,4 @@
-import { StoryInfo } from "@routes/Main";
+import { StoryInfo } from "../storySlice";
 import { koreanDateFormatter } from "@utils/dataUtils";
 import React from "react";
 import { useNavigate } from "react-router-dom";

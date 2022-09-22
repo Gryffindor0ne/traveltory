@@ -1,26 +1,15 @@
 import { dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../hooks";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-export type StoryInfo = {
-  category: string;
-  id: string;
-  title: string;
-  content: string;
-  image: string;
-  tags: string[];
-  writtenAt: string;
-  writerId: string;
-  writerNickName: string;
-  writer_profile_image: string;
-};
+import { StoryInfo, storyData, updateStory } from "../storySlice";
 
 const Main = () => {
   const navigate = useNavigate();
-
-  const [stories, setStories] = useState<StoryInfo[]>([]);
+  const { stories } = useAppSelector(storyData);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const q = query(
@@ -33,7 +22,7 @@ const Main = () => {
         ...doc.data(),
       }));
 
-      setStories(storyArr as StoryInfo[]);
+      dispatch(updateStory(storyArr as StoryInfo[]));
     });
   }, []);
 
