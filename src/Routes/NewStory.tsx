@@ -12,6 +12,15 @@ type StoryInfo = {
   tags: string[];
 };
 
+export const selectList = [
+  { value: "domestic", name: "국내여행" },
+  { value: "overseas", name: "해외여행" },
+  { value: "day", name: "당일치기" },
+  { value: "single", name: "홀로가기" },
+  { value: "together", name: "함께가기" },
+  { value: "tip", name: "여행노하우" },
+];
+
 const NewStory = () => {
   const [story, setStory] = useState<StoryInfo>({
     category: "",
@@ -20,23 +29,13 @@ const NewStory = () => {
     tags: [],
   });
   const [image, setImage] = useState<string>("");
-  const { id, nickname } = useAppSelector(userState);
-
-  const selectList = [
-    { value: "domestic", name: "국내여행" },
-    { value: "overseas", name: "해외여행" },
-    { value: "day", name: "당일치기" },
-    { value: "single", name: "홀로가기" },
-    { value: "together", name: "함께가기" },
-    { value: "tip", name: "여행노하우" },
-  ];
+  const { id, nickname, profile_image } = useAppSelector(userState);
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.target as HTMLButtonElement;
 
-    console.log(name, value);
     setStory({ ...story, [name]: value });
   };
   console.log(story);
@@ -77,6 +76,7 @@ const NewStory = () => {
       writtenAt: Date.now(),
       writerId: id,
       writerNickName: nickname,
+      writer_profile_image: profile_image,
       image,
     };
     try {

@@ -32,6 +32,7 @@ function App() {
         dispatch(setUser({ ...naverLogin.user }));
       } else {
         authService.onAuthStateChanged(async (user) => {
+          console.log(user);
           if (user) {
             dispatch(setLoginState(true));
             dispatch(

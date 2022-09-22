@@ -5,8 +5,8 @@ import { useAppSelector } from "../hooks";
 import { checkLoginState } from "../loginSlice";
 import NavBar from "@components/NavBar";
 import Profile from "@routes/Profile";
-import New from "@components/NewStory";
-import Story from "@components/Story";
+import New from "@routes/NewStory";
+import Story from "@routes/Story";
 
 const AppRouter = () => {
   const { loginState } = useAppSelector(checkLoginState);
