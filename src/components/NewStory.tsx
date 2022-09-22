@@ -1,6 +1,9 @@
 import { dbService } from "@apis/f-base";
 import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
+import ImageUploadForm from "@components/ImageUploadForm";
+import { useAppSelector } from "../hooks";
+import { userState } from "../userSlice";
 
 type StoryInfo = {
   category: string;
@@ -16,6 +19,8 @@ const NewStory = () => {
     content: "",
     tags: [],
   });
+  const [image, setImage] = useState<string>("");
+  const { id, nickname } = useAppSelector(userState);
 
   const selectList = [
     { value: "domestic", name: "국내여행" },
@@ -67,11 +72,15 @@ const NewStory = () => {
   };
 
   const onSubmit = async () => {
+    const storyObj = {
+      ...story,
+      writtenAt: Date.now(),
+      writerId: id,
+      writerNickName: nickname,
+      image,
+    };
     try {
-      await addDoc(collection(dbService, "stories"), {
-        story,
-        writtenAt: Date.now(),
-      });
+      await addDoc(collection(dbService, "stories"), storyObj);
     } catch (error) {
       console.log(error);
     }
@@ -88,6 +97,7 @@ const NewStory = () => {
           </option>
         ))}
       </select>
+      <ImageUploadForm setImage={setImage} />
       <input
         name="title"
         type="text"

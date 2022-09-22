@@ -29,6 +29,7 @@ function App() {
       if (status) {
         dispatch(setLoginState(true));
         dispatch(setNaverLoginState(true));
+        dispatch(setUser({ ...naverLogin.user }));
       } else {
         authService.onAuthStateChanged(async (user) => {
           if (user) {
