@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 
 import "../App.css";
 import AppRouter from "./Router";
-import { useAppDispatch, useAppSelector } from "../hooks";
-import { setLoginState, setNaverLoginState, userState } from "../userSlice";
+import { useAppDispatch } from "../hooks";
+import { setLoginState, setNaverLoginState } from "../loginSlice";
+import { setUser } from "../userSlice";
 
 declare global {
   interface Window {
@@ -32,6 +33,15 @@ function App() {
         authService.onAuthStateChanged(async (user) => {
           if (user) {
             dispatch(setLoginState(true));
+            dispatch(
+              setUser({
+                name: user.displayName || user.email?.split("@")[0],
+                email: user.email,
+                id: user.uid,
+                nickname: user.email?.split("@")[0],
+                profile_image: user.photoURL || null,
+              })
+            );
           } else {
             dispatch(setLoginState(false));
           }

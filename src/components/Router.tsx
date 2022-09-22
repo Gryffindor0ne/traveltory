@@ -2,14 +2,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from "@routes/Auth";
 import Main from "@routes/Main";
 import { useAppSelector } from "../hooks";
-import { userState } from "../userSlice";
+import { checkLoginState } from "../loginSlice";
 import NavBar from "@components/NavBar";
 import Profile from "@routes/Profile";
 import New from "@components/NewStory";
 import Story from "@components/Story";
 
 const AppRouter = () => {
-  const { loginState } = useAppSelector(userState);
+  const { loginState } = useAppSelector(checkLoginState);
 
   return (
     <Router>
