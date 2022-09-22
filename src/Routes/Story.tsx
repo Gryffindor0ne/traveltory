@@ -2,7 +2,7 @@ import { useAppSelector } from "../hooks";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { storyData, StoryInfo } from "../storySlice";
-import { koreanDateFormatter } from "@utils/dataUtils";
+import { koreanDateFormatter } from "@utils/dateUtils";
 import { selectList } from "./NewStory";
 import Tags from "@components/Tags";
 

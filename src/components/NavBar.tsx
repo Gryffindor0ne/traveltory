@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { removeTag } from "../storySlice";
+
+import { useAppDispatch } from "../hooks";
 
 function NavBar() {
+  const dispatch = useAppDispatch();
   return (
     <>
       <nav>
         <div>
-          <Link to="/">My Traveltory</Link>
+          <Link
+            to="/"
+            onClick={() => {
+              dispatch(removeTag());
+            }}
+          >
+            My Traveltory
+          </Link>
           <ul>
             <li>
-              <Link to="/">홈</Link>
+              <Link
+                to="/"
+                onClick={() => {
+                  dispatch(removeTag());
+                }}
+              >
+                홈
+              </Link>
             </li>
             <li>
               <Link to="/story/new">글쓰기</Link>
