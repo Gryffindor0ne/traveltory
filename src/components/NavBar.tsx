@@ -9,11 +9,13 @@ function NavBar() {
           <Link to="/">My Traveltory</Link>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">홈</Link>
             </li>
-
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/story/new">글쓰기</Link>
+            </li>
+            <li>
+              <Link to="/profile">내 정보</Link>
             </li>
           </ul>
         </div>
