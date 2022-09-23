@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { setLoginState, setNaverLoginState } from "../loginSlice";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../userSlice";
+import styled from "styled-components";
 
 declare global {
   interface Window {
@@ -11,6 +12,14 @@ declare global {
 }
 
 const { naver } = window;
+
+const AuthBtn = styled.button`
+  width: 100%;
+  border: none;
+  background: white;
+  cursor: pointer;
+  padding: 10px 0px;
+`;
 
 const Naver = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +30,7 @@ const Naver = () => {
     callbackUrl: "http://localhost:3000",
     // callbackUrl: "https://my-traveltory.web.app",
     isPopup: false,
-    loginButton: { color: "green", type: 3, height: 40 },
+    loginButton: { color: "green", type: 3, height: 70 },
   });
 
   const getUser = async () => {
@@ -53,7 +62,7 @@ const Naver = () => {
     userAccessToken();
   }, []);
 
-  return <div id="naverIdLogin" />;
+  return <AuthBtn id="naverIdLogin" />;
 };
 
 export default Naver;

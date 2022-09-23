@@ -1,7 +1,6 @@
 import { authService } from "@apis/f-base";
 import React, { useEffect, useState } from "react";
 
-import "../App.css";
 import AppRouter from "./Router";
 import { useAppDispatch } from "../hooks";
 import { setLoginState, setNaverLoginState } from "../loginSlice";
