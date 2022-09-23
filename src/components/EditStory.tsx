@@ -1,17 +1,9 @@
 import { dbService } from "@apis/f-base";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import ImageUploadForm from "@components/ImageUploadForm";
-import { useAppSelector } from "../hooks";
-import { userState } from "../userSlice";
+import { StoryInfo } from "../storySlice";
 import { useNavigate } from "react-router-dom";
-
-type StoryData = {
-  category: string;
-  title: string;
-  content: string;
-  tags: string[];
-};
 
 export const selectList = [
   { value: "domestic", name: "국내여행" },
@@ -22,45 +14,45 @@ export const selectList = [
   { value: "tip", name: "여행노하우" },
 ];
 
-const NewStory = () => {
+const EditStory = ({
+  stories,
+  setIsEdit,
+}: {
+  stories: StoryInfo | undefined;
+  setIsEdit: (prev: boolean) => void;
+}) => {
   const navigate = useNavigate();
-  const [story, setStory] = useState<StoryData>({
-    category: "",
-    title: "",
-    content: "",
-    tags: [],
-  });
+  const [newStory, setNewStory] = useState(stories as StoryInfo);
   const [image, setImage] = useState<string>("");
-  const { id, nickname, profile_image } = useAppSelector(userState);
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.target as HTMLButtonElement;
 
-    setStory({ ...story, [name]: value });
+    setNewStory({ ...newStory, [name]: value });
   };
-  console.log(story);
+  console.log(newStory);
 
   const addTag = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { value } = event.target as HTMLButtonElement;
 
-    const filtered = story.tags.filter((el) => el === value);
+    const filtered = newStory.tags.filter((el) => el === value);
 
     if (value !== "" && filtered.length === 0) {
-      setStory({
-        ...story,
-        tags: [...story.tags, value],
+      setNewStory({
+        ...newStory,
+        tags: [...newStory.tags, value],
       });
     }
     event.currentTarget.value = "";
   };
 
   const removeTag = (clickedIndex: number) => {
-    setStory(() => {
+    setNewStory(() => {
       return {
-        ...story,
-        tags: story.tags.filter((_, index) => {
+        ...newStory,
+        tags: newStory.tags.filter((_, index) => {
           return index !== clickedIndex;
         }),
       };
@@ -69,25 +61,19 @@ const NewStory = () => {
 
   const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = event.target as HTMLSelectElement;
-    setStory({ ...story, [name]: value });
+    setNewStory({ ...newStory, [name]: value });
   };
 
   const onSubmit = async () => {
     const storyObj = {
-      ...story,
-      writtenAt: Date.now(),
-      writerId: id,
-      writerNickName: nickname,
-      writer_profile_image: profile_image,
+      ...newStory,
       image,
     };
     try {
-      await addDoc(collection(dbService, "stories"), storyObj);
+      await updateDoc(doc(dbService, "stories", `${stories?.id}`), storyObj);
     } catch (error) {
       console.log(error);
     }
-    setStory({ category: "카테고리 선택", title: "", content: "", tags: [] });
-    setImage("");
     navigate("/");
   };
 
@@ -106,7 +92,7 @@ const NewStory = () => {
         name="title"
         type="text"
         placeholder="제목을 작성하세요."
-        value={story.title}
+        value={newStory.title}
         onChange={onChange}
       />
 
@@ -117,7 +103,7 @@ const NewStory = () => {
           placeholder="태그를 입력할 수 있습니다. 원하는 태그를 적고 엔터키를 치세요~"
         />
         <ul>
-          {story.tags.map((el, index) => {
+          {newStory.tags.map((el, index) => {
             return (
               <li key={"tagInput" + index}>
                 <span>{el}</span>
@@ -130,14 +116,15 @@ const NewStory = () => {
       <textarea
         name="content"
         placeholder="내용을 작성하세요."
-        value={story.content}
+        value={newStory.content}
         onChange={onChange}
       />
-      <button onClick={onSubmit} value="새 글 등록">
-        새 글 등록
+      <button onClick={onSubmit} value="스토리 수정">
+        스토리 수정
       </button>
+      <button onClick={(prev) => setIsEdit(!prev)}>취소</button>
     </>
   );
 };
 
-export default NewStory;
+export default EditStory;
