@@ -9,6 +9,7 @@ import NavBar from "@components/NavBar";
 import Profile from "@routes/Profile";
 import New from "@routes/NewStory";
 import Story from "@routes/Story";
+import TopButton from "./TopButton";
 
 const Container = styled.div`
   display: flex;
@@ -40,6 +41,7 @@ const AppRouter = () => {
             <Route path="/" element={<Auth />} />
           )}
         </Routes>
+        <TopButton />
       </Router>
     </Container>
   );

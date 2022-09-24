@@ -19,6 +19,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1.7rem;
+
   margin: 2rem 0;
 `;
 

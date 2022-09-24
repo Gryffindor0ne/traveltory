@@ -14,7 +14,7 @@ const TagBtn = styled.button`
   border-radius: 10px;
   background: white;
   color: #ff6e40;
-  width: 3.5rem;
+  width: 4rem;
   height: 1.5rem;
   font-size: 0.5rem;
   font-weight: bold;

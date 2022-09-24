@@ -38,7 +38,7 @@ const ProfileImg = styled.img`
   height: 4rem;
   border: none;
   border-radius: 50%;
-  background: #ffab91;
+  background: #ff8f00;
   margin: 0.5rem;
   padding: 0.2rem;
 `;
@@ -46,18 +46,21 @@ const LogOutBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  border: 1px solid #ffab91;
+  border-radius: 10px;
+  color: #ff8f00;
+  font-weight: bold;
+  font-size: 1.1rem;
   width: 7rem;
   height: 2.5rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 10px;
-  color: #ffffff;
-  background: #ffab91;
   margin-top: 3rem;
 
   :hover {
-    transform: scale(1.1);
+    border: none;
+    background: #ff8f00;
+    color: white;
+    font-weight: bold;
   }
 `;
 

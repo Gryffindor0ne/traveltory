@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
@@ -228,6 +229,7 @@ const NewStory = () => {
       <FormControl variant="standard" sx={{ m: 1, width: "12ch" }}>
         <InputLabel id="demo-simple-select-standard-label">카테고리</InputLabel>
         <Select
+          color="warning"
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           value={story.category}
@@ -252,6 +254,7 @@ const NewStory = () => {
         autoComplete="off"
       >
         <TextField
+          color="warning"
           id="standard-basic"
           label="제목"
           variant="standard"

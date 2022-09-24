@@ -35,6 +35,7 @@ const TitleContainer = styled.div`
 const Title = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
+  font-family: "DM Serif Display", serif;
   color: #f9a825;
 `;
 
