@@ -55,7 +55,12 @@ function NavBar() {
 
           <MenuBar>
             <Icon>
-              <Link to="/story/new">
+              <Link
+                to="/story/new"
+                onClick={() => {
+                  dispatch(removeTag());
+                }}
+              >
                 <FontAwesomeIcon icon={faPen} color={"#ff8f00"} />
               </Link>
             </Icon>

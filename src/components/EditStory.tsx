@@ -3,7 +3,6 @@ import { doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import ImageUploadForm from "@components/ImageUploadForm";
 import { StoryInfo } from "../storySlice";
-import { useNavigate } from "react-router-dom";
 import { selectList } from "@routes/NewStory";
 
 import Box from "@mui/material/Box";
@@ -138,16 +137,14 @@ const CancelBtn = styled.span`
 `;
 
 const EditStory = ({
-  stories,
+  story,
   setIsEdit,
 }: {
-  stories: StoryInfo | undefined;
+  story: StoryInfo | undefined;
   setIsEdit: (prev: boolean) => void;
 }) => {
-  const navigate = useNavigate();
-  const [newStory, setNewStory] = useState(stories as StoryInfo);
-  const [image, setImage] = useState<string>("");
-  const [imageURL, setImageURL] = useState<string>("");
+  const [newStory, setNewStory] = useState(story as StoryInfo);
+  const [newImageURL, setNewImageURL] = useState<string>(story?.image ?? "");
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -191,23 +188,19 @@ const EditStory = ({
   const onSubmit = async () => {
     const storyObj = {
       ...newStory,
-      image,
+      image: newImageURL ?? story?.image,
     };
     try {
-      await updateDoc(doc(dbService, "stories", `${stories?.id}`), storyObj);
+      await updateDoc(doc(dbService, "stories", `${story?.id}`), storyObj);
+      setIsEdit(false);
     } catch (error) {
       console.log(error);
     }
-    navigate("/");
   };
 
   return (
     <EditStoryContainer>
-      <ImageUploadForm
-        setImage={setImage}
-        imageURL={newStory.image}
-        setImageURL={setImageURL}
-      />
+      <ImageUploadForm imageURL={newImageURL} setImageURL={setNewImageURL} />
       <FormControl variant="standard" sx={{ m: 1, width: "12ch" }}>
         <InputLabel id="demo-simple-select-standard-label">카테고리</InputLabel>
         <Select

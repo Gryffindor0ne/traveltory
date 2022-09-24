@@ -128,7 +128,7 @@ const Story = () => {
   return (
     <>
       {isEdit ? (
-        <EditStory stories={currentStory} setIsEdit={setIsEdit} />
+        <EditStory story={currentStory} setIsEdit={setIsEdit} />
       ) : (
         <StoryContainer>
           {currentStory?.writerId === id && (

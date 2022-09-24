@@ -161,7 +161,6 @@ const NewStory = () => {
     content: "",
     tags: [],
   });
-  const [image, setImage] = useState<string>("");
   const [imageURL, setImageURL] = useState<string>("");
   const { id, nickname, profile_image } = useAppSelector(userState);
 
@@ -211,7 +210,7 @@ const NewStory = () => {
       writerId: id,
       writerNickName: nickname,
       writer_profile_image: profile_image,
-      image,
+      image: imageURL,
     };
     try {
       await addDoc(collection(dbService, "stories"), storyObj);
@@ -219,17 +218,13 @@ const NewStory = () => {
       console.log(error);
     }
     setStory({ category: "카테고리 선택", title: "", content: "", tags: [] });
-    setImage("");
+    setImageURL("");
     navigate("/");
   };
 
   return (
     <NewStoryContainer>
-      <ImageUploadForm
-        setImage={setImage}
-        imageURL={imageURL}
-        setImageURL={setImageURL}
-      />
+      <ImageUploadForm imageURL={imageURL} setImageURL={setImageURL} />
       <FormControl variant="standard" sx={{ m: 1, width: "12ch" }}>
         <InputLabel id="demo-simple-select-standard-label">카테고리</InputLabel>
         <Select

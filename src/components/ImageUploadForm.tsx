@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { styled as styledM } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -85,11 +86,9 @@ const ImageUploadBtn = styled.button`
 
 const UploadImageForm = ({
   imageURL,
-  setImage,
   setImageURL,
 }: {
   imageURL: string;
-  setImage: (p: string) => void;
   setImageURL: (p: string) => void;
 }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -106,7 +105,7 @@ const UploadImageForm = ({
     const file = e.target.files;
     if (!file) return null;
 
-    const storageRef = ref(storage, `images/${file[0].name}`);
+    const storageRef = ref(storage, `images/${uuidv4()}`);
     const uploadTask = uploadBytesResumable(storageRef, file[0]);
 
     uploadTask.on(
@@ -129,7 +128,6 @@ const UploadImageForm = ({
         getDownloadURL(storageRef).then((downloadURL) => {
           console.log("File available at", downloadURL);
           setImageURL(downloadURL);
-          setImage(downloadURL);
         });
       }
     );
@@ -137,7 +135,6 @@ const UploadImageForm = ({
 
   const onDefaultImageButtonClick = () => {
     setImageURL(defaultImageURL);
-    setImage(defaultImageURL);
   };
 
   const onUploadImageButtonClick = useCallback(() => {
