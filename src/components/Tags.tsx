@@ -1,8 +1,32 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 import { useAppDispatch } from "../hooks";
 import { addTag } from "../storySlice";
+
+const TagBtn = styled.button`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ffab91;
+  border-radius: 10px;
+  background: white;
+  color: #ff6e40;
+  width: 3.5rem;
+  height: 1.5rem;
+  font-size: 0.5rem;
+  font-weight: bold;
+  margin-right: 0.8rem;
+
+  :hover {
+    border: none;
+    background: #ff6e40;
+    color: white;
+    font-weight: bold;
+  }
+`;
 
 const Tags = ({ tags }: { tags: string[] | undefined }) => {
   const navigate = useNavigate();
@@ -21,9 +45,9 @@ const Tags = ({ tags }: { tags: string[] | undefined }) => {
     <>
       {tags?.map((el: string, idx) => {
         return (
-          <span key={idx} onClick={tagClick}>
+          <TagBtn key={idx} onClick={tagClick}>
             {el}
-          </span>
+          </TagBtn>
         );
       })}
     </>

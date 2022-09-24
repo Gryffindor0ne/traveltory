@@ -1,43 +1,72 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { removeTag } from "../storySlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faPen } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 
+import { removeTag } from "../storySlice";
 import { useAppDispatch } from "../hooks";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  margin: 20px 0;
+`;
+
+const NavigationBox = styled.nav`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 1rem;
+`;
+
+const MenuBar = styled.ul`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+const LogoImg = styled.img`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 5px;
+`;
+
+const Icon = styled.li`
+  font-size: 1.7rem;
+  margin-left: 2rem;
+`;
 
 function NavBar() {
   const dispatch = useAppDispatch();
   return (
     <>
-      <nav>
-        <div>
+      <Container>
+        <NavigationBox>
           <Link
             to="/"
             onClick={() => {
               dispatch(removeTag());
             }}
           >
-            My Traveltory
+            <LogoImg src="/images/logo.png" alt="logo" />
           </Link>
-          <ul>
-            <li>
-              <Link
-                to="/"
-                onClick={() => {
-                  dispatch(removeTag());
-                }}
-              >
-                홈
+
+          <MenuBar>
+            <Icon>
+              <Link to="/story/new">
+                <FontAwesomeIcon icon={faPen} color={"#ff8f00"} />
               </Link>
-            </li>
-            <li>
-              <Link to="/story/new">글쓰기</Link>
-            </li>
-            <li>
-              <Link to="/profile">내 정보</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+            </Icon>
+            <Icon>
+              <Link to="/profile">
+                <FontAwesomeIcon icon={faUser} color={"#ff8f00"} />
+              </Link>
+            </Icon>
+          </MenuBar>
+        </NavigationBox>
+      </Container>
     </>
   );
 }

@@ -34,6 +34,8 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.div`
   font-size: 2.5rem;
+  font-weight: bold;
+  color: #f9a825;
 `;
 
 const SubTitle = styled.div`
@@ -83,6 +85,7 @@ const SocialLoginImg = styled.img`
   height: 3.1rem;
   border-radius: 5px;
 `;
+
 const Auth = () => {
   const onSocialClick = async (e: React.MouseEvent<HTMLElement>) => {
     const name = (e.currentTarget as HTMLButtonElement).name;
@@ -99,7 +102,8 @@ const Auth = () => {
   return (
     <Container>
       <TitleContainer>
-        <Title>My Traveltory</Title>
+        <Title>MY</Title>
+        <Title>TRAVELTORY</Title>
         <SubTitle>여행 감성 공유 플랫폼</SubTitle>
       </TitleContainer>
 

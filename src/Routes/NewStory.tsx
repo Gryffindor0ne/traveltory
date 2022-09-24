@@ -6,6 +6,137 @@ import { useAppSelector } from "../hooks";
 import { userState } from "../userSlice";
 import { useNavigate } from "react-router-dom";
 
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+
+const NewStoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 1rem auto 5rem auto;
+`;
+
+const TagContainer = styled.div`
+  > ul {
+    display: flex;
+    margin: 0.5rem 0;
+    flex-wrap: wrap;
+    > li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      font-size: 0.7em;
+      margin: 0.5rem;
+      word-break: keep-all;
+      border-radius: 10px;
+      color: #ffffff;
+      background-color: #ff8f00;
+      padding: 10px;
+      > span {
+        > svg {
+          cursor: pointer;
+          font-size: 1rem;
+          margin-left: 0.2rem;
+        }
+      }
+    }
+  }
+`;
+
+const TagInput = styled.input`
+  width: 220px;
+  height: 2rem;
+  border: 1px solid #ff8f00;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  outline: none;
+  padding: 1rem;
+  margin: 1rem 0;
+
+  ::placeholder {
+    color: #ff8f00;
+    font-size: 0.8rem;
+  }
+`;
+
+const ContentInput = styled.textarea`
+  height: 20rem;
+  border: 1px solid #ff8f00;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  margin: 1rem 0;
+  line-height: 1.7rem;
+  padding: 1rem;
+
+  ::placeholder {
+    color: #ff8f00;
+    font-size: 0.8rem;
+  }
+`;
+
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 300px;
+  margin-top: 1rem;
+`;
+
+const BackBtn = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ffab91;
+  border-radius: 10px;
+  color: #ff8f00;
+  font-weight: bold;
+  font-size: 0.7rem;
+  width: 4rem;
+  height: 2rem;
+  padding: 8px;
+  margin-right: 0.5rem;
+
+  :hover {
+    border: none;
+    background: #ff8f00;
+    color: white;
+    font-weight: bold;
+  }
+`;
+
+const RegisterBtn = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ffab91;
+  border-radius: 10px;
+  color: #ff8f00;
+  font-weight: bold;
+  font-size: 0.7rem;
+  width: 7rem;
+  height: 2rem;
+  padding: 8px;
+
+  :hover {
+    border: none;
+    background: #ff8f00;
+    color: white;
+    font-weight: bold;
+  }
+`;
+
 type StoryData = {
   category: string;
   title: string;
@@ -31,6 +162,7 @@ const NewStory = () => {
     tags: [],
   });
   const [image, setImage] = useState<string>("");
+  const [imageURL, setImageURL] = useState<string>("");
   const { id, nickname, profile_image } = useAppSelector(userState);
 
   const onChange = (
@@ -67,7 +199,7 @@ const NewStory = () => {
     });
   };
 
-  const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelect = (event: SelectChangeEvent) => {
     const { name, value } = event.target as HTMLSelectElement;
     setStory({ ...story, [name]: value });
   };
@@ -92,51 +224,88 @@ const NewStory = () => {
   };
 
   return (
-    <>
-      <select onChange={handleSelect} name="category">
-        <option>카테고리 선택</option>
-        {selectList.map((option) => (
-          <option value={option.value} key={option.value}>
-            {option.name}
-          </option>
-        ))}
-      </select>
-      <ImageUploadForm setImage={setImage} />
-      <input
-        name="title"
-        type="text"
-        placeholder="제목을 작성하세요."
-        value={story.title}
-        onChange={onChange}
+    <NewStoryContainer>
+      <ImageUploadForm
+        setImage={setImage}
+        imageURL={imageURL}
+        setImageURL={setImageURL}
       />
+      <FormControl variant="standard" sx={{ m: 1, width: "12ch" }}>
+        <InputLabel id="demo-simple-select-standard-label">카테고리</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={story.category}
+          label="category"
+          name="category"
+          onChange={handleSelect}
+        >
+          {selectList.map((option) => (
+            <MenuItem value={option.value} key={option.value}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
-      <div>
-        <input
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": { m: 1, width: "28ch" },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          id="standard-basic"
+          label="제목"
+          variant="standard"
+          name="title"
+          type="text"
+          placeholder="제목을 작성하세요."
+          value={story.title}
+          onChange={onChange}
+        />
+      </Box>
+
+      <TagContainer>
+        <TagInput
           type="text"
           onKeyUp={(event) => (event.key === "Enter" ? addTag(event) : null)}
-          placeholder="태그를 입력할 수 있습니다. 원하는 태그를 적고 엔터키를 치세요~"
+          placeholder="태그입력! 원하는 태그를 적고 Enter!"
         />
         <ul>
           {story.tags.map((el, index) => {
             return (
               <li key={"tagInput" + index}>
                 <span>{el}</span>
-                <span onClick={() => removeTag(index)}>&times;</span>
+                <span onClick={() => removeTag(index)}>
+                  <FontAwesomeIcon icon={faDeleteLeft} />
+                </span>
               </li>
             );
           })}
         </ul>
-      </div>
-      <textarea
+      </TagContainer>
+
+      <ContentInput
         name="content"
         placeholder="내용을 작성하세요."
         value={story.content}
         onChange={onChange}
       />
-      <button onClick={onSubmit} value="새 글 등록">
-        새 글 등록
-      </button>
-    </>
+
+      <BtnContainer>
+        <BackBtn
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <span>나가기</span>
+        </BackBtn>
+        <RegisterBtn onClick={onSubmit}>새 스토리 등록</RegisterBtn>
+      </BtnContainer>
+    </NewStoryContainer>
   );
 };
 

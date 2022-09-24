@@ -1,13 +1,28 @@
+import React, { useEffect, useState } from "react";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import styled from "styled-components";
+
 import { dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { StoryInfo, storyData, updateStory } from "../storySlice";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+`;
+
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  margin: 2rem 0;
+`;
+
 const Main = () => {
-  const navigate = useNavigate();
   const { stories, tag } = useAppSelector(storyData);
   const dispatch = useAppDispatch();
 
@@ -43,15 +58,15 @@ const Main = () => {
   console.log(selectedStoriesByTag);
 
   return (
-    <div>
-      <div>내 여행 기록</div>
-      <div onClick={() => navigate("/story/new")}>글쓰기</div>
+    <Container>
+      <Title>여행 감성</Title>
+
       {tag.length !== 0
         ? selectedStoriesByTag.map((story) => (
             <ShortStories story={story} key={story.id} />
           ))
         : stories.map((story) => <ShortStories story={story} key={story.id} />)}
-    </div>
+    </Container>
   );
 };
 

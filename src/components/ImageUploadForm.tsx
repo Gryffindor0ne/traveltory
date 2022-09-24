@@ -1,11 +1,101 @@
 import React, { useState, useRef, useCallback } from "react";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import styled from "styled-components";
+import { styled as styledM } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
 
 import { storage } from "../apis/f-base";
 
-const UploadImageForm = ({ setImage }: { setImage: (p: string) => void }) => {
+const BorderLinearProgress = styledM(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor:
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+  },
+}));
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+  border: solid 1px #ff8f00;
+  border-radius: 1rem;
+  margin: 2rem 0;
+`;
+
+const FileInput = styled.input`
+  display: none;
+`;
+
+const ImageBox = styled.div`
+  margin-left: 1rem;
+  > img {
+    border-radius: 1rem;
+    width: 10rem;
+    height: 7rem;
+  }
+`;
+
+const ImageUploadContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10rem;
+`;
+
+const ImageBtns = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 10rem;
+`;
+
+const ImageUploadBtn = styled.button`
+  cursor: pointer;
+
+  background-color: transparent;
+  border: 1px solid #ff8f00;
+  border-radius: 10px;
+  color: #ff8f00;
+  font-weight: bold;
+  font-size: 0.5rem;
+  width: 6rem;
+  padding: 6px;
+  margin: 0.5rem;
+
+  :hover {
+    border: none;
+    background: #ff8f00;
+    color: white;
+    font-weight: bold;
+  }
+`;
+
+const UploadImageForm = ({
+  imageURL,
+  setImage,
+  setImageURL,
+}: {
+  imageURL: string;
+  setImage: (p: string) => void;
+  setImageURL: (p: string) => void;
+}) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [imageURL, setImageURL] = useState<string>("");
+
+  const [progressPercent, setProgressPercent] = useState<number>(0);
+
   const defaultImageURL =
     "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80";
 
@@ -25,6 +115,7 @@ const UploadImageForm = ({ setImage }: { setImage: (p: string) => void }) => {
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
+        setProgressPercent(progress);
       },
       (error) => {
         switch (error.code) {
@@ -55,40 +146,38 @@ const UploadImageForm = ({ setImage }: { setImage: (p: string) => void }) => {
   }, []);
 
   return (
-    <div>
-      <input
+    <Container>
+      <FileInput
         type="file"
         ref={inputRef}
         name="images"
         onChange={onImageChange}
         accept="image/*"
       />
-
-      <section>
-        <div>
+      <ImageUploadContainer>
+        <ImageBox>
           {imageURL &&
             (imageURL.includes("firebasestorage") ? (
-              <img
-                src={imageURL}
-                alt={imageURL.split("/")[7].split("?")[0]}
-                width="70px"
-                height="70px"
-              />
+              <img src={imageURL} alt={imageURL.split("/")[7].split("?")[0]} />
             ) : (
-              <img
-                src={imageURL}
-                alt="default-Image"
-                width="70px"
-                height="70px"
-              />
+              <img src={imageURL} alt="default-Image" />
             ))}
-        </div>
-        <div>
-          <button onClick={onDefaultImageButtonClick}>기본 이미지 사용</button>
-          <button onClick={onUploadImageButtonClick}>이미지 업로드</button>
-        </div>
-      </section>
-    </div>
+        </ImageBox>
+        <ImageBtns>
+          <ImageUploadBtn onClick={onDefaultImageButtonClick}>
+            기본 이미지 사용
+          </ImageUploadBtn>
+          <ImageUploadBtn onClick={onUploadImageButtonClick}>
+            이미지 업로드
+          </ImageUploadBtn>
+        </ImageBtns>
+      </ImageUploadContainer>
+      {progressPercent > 0 && progressPercent < 100 && (
+        <Box sx={{ width: "100%" }}>
+          <BorderLinearProgress variant="determinate" value={progressPercent} />
+        </Box>
+      )}
+    </Container>
   );
 };
 
