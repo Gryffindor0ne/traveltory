@@ -30,7 +30,7 @@ const Naver = () => {
     callbackUrl: "http://localhost:3000",
     // callbackUrl: "https://my-traveltory.web.app",
     isPopup: false,
-    loginButton: { color: "green", type: 3, height: 70 },
+    loginButton: { color: "green", type: 3, height: 50 },
   });
 
   const getUser = async () => {

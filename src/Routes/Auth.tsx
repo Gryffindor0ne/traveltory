@@ -9,11 +9,18 @@ import styled from "styled-components";
 import { authService } from "@apis/f-base";
 import Naver from "@components/naverLogin";
 
+const setScreenSize = () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+};
+setScreenSize();
+window.addEventListener("resize", setScreenSize);
+
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
+  width: auto;
+  height: calc(var(--vh, 1vh) * 100);
   justify-content: center;
   align-items: center;
 `;
@@ -23,14 +30,14 @@ const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 12rem;
+  margin: 5rem;
 `;
 const Title = styled.div`
-  font-size: 5rem;
+  font-size: 2.5rem;
 `;
 
 const SubTitle = styled.div`
-  font-size: 2.3rem;
+  font-size: 1.2rem;
   margin-top: 2rem;
 `;
 
@@ -39,6 +46,8 @@ const AuthBtnContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 320px;
 `;
 
 const UserGuideText = styled.div`
@@ -47,30 +56,32 @@ const UserGuideText = styled.div`
 `;
 
 const AuthBtns = styled.div`
-  display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 320px;
 `;
 
 const AuthBtn = styled.button`
-  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background: white;
   cursor: pointer;
+  width: 20rem;
   padding: 10px 0px;
 `;
+
 const GoogleBtnLine = styled.div`
-  width: 20.2rem;
-  height: 4.3rem;
-  border: solid 1px grey;
+  width: 14.5rem;
+  height: 3.3rem;
+  border: solid 1.5px grey;
   border-radius: 10px;
 `;
 
 const SocialLoginImg = styled.img`
-  width: 20rem;
-  height: 4.2rem;
-  border-radius: 10px;
+  width: 14rem;
+  height: 3.1rem;
+  border-radius: 5px;
 `;
 const Auth = () => {
   const onSocialClick = async (e: React.MouseEvent<HTMLElement>) => {
