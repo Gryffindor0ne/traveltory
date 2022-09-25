@@ -21,7 +21,7 @@ const BorderLinearProgress = styledM(LinearProgress)(({ theme }) => ({
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+    backgroundColor: theme.palette.mode === "light" ? "#ffab91" : "#ff8f00",
   },
 }));
 
@@ -46,9 +46,10 @@ const ImageBox = styled.div`
     margin-left: 3rem;
   }
   > img {
-    border-radius: 1rem;
+    border-radius: 10px;
     width: 10rem;
     height: 7rem;
+    object-fit: contain;
   }
 `;
 

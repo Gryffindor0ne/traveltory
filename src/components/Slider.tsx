@@ -32,12 +32,6 @@ const Btn = styled.button`
   height: 2rem;
   margin: 0rem 0.1rem;
 
-  :hover {
-    background: #ff6e40;
-    color: white;
-    font-weight: bold;
-    border: none;
-  }
   &.active {
     background: #ff6e40;
     color: white;

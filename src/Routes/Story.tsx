@@ -104,9 +104,6 @@ const Story = () => {
   const [currentStory, setCurrentStory] = useState<StoryInfo | undefined>();
   const [isEdit, setIsEdit] = useState(false);
 
-  console.log(id);
-  console.log(currentStory?.writerId);
-
   useEffect(() => {
     if (currentId) {
       setCurrentStory(stories.find((el) => el.id === currentId));
@@ -160,8 +157,6 @@ const Story = () => {
             <StoryImg
               src={currentStory.image}
               alt={currentStory.writerNickName}
-              width="150px"
-              height="120px"
             />
           )}
           <Title>{currentStory?.title}</Title>

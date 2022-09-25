@@ -42,17 +42,17 @@ const Main = () => {
         id: doc.id,
         ...doc.data(),
       }));
-
       dispatch(updateStory(storyArr as StoryInfo[]));
     });
   }, []);
 
   useEffect(() => {
     if (tag) {
-      setSelectedStoriesByTag(stories.filter((el) => el.tags.includes(tag)));
       dispatch(removeCategory());
+      setSelectedStoriesByCategory([]);
+      setSelectedStoriesByTag(stories.filter((el) => el.tags.includes(tag)));
     }
-  }, [tag, stories]);
+  }, [tag]);
 
   useEffect(() => {
     if (category) {
@@ -62,15 +62,10 @@ const Main = () => {
         setSelectedStoriesByCategory(
           stories.filter((el) => el.category.includes(category))
         );
+        dispatch(removeTag());
       }
-      dispatch(removeTag());
     }
   }, [category]);
-
-  console.log(tag);
-  console.log(selectedStoriesByTag);
-  console.log(category);
-  console.log(selectedStoriesByCategory);
 
   return (
     <Container>

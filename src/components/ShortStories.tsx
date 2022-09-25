@@ -43,6 +43,7 @@ const StoryInfoBox = styled.div`
 `;
 
 const StoryImg = styled.img`
+  object-fit: cover;
   width: 100%;
   height: 160px;
   border-radius: 5px;
