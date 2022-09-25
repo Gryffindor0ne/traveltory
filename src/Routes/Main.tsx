@@ -14,15 +14,6 @@ const Container = styled.div`
   max-width: 320px;
 `;
 
-const Title = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.7rem;
-
-  margin: 2rem 0;
-`;
-
 const Main = () => {
   const { stories, tag } = useAppSelector(storyData);
   const dispatch = useAppDispatch();
@@ -60,8 +51,6 @@ const Main = () => {
 
   return (
     <Container>
-      <Title>여행 감성</Title>
-
       {tag.length !== 0
         ? selectedStoriesByTag.map((story) => (
             <ShortStories story={story} key={story.id} />

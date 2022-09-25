@@ -12,7 +12,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 330px;
-  margin: 20px 0;
+  margin: 30px 0;
 `;
 
 const NavigationBox = styled.nav`
