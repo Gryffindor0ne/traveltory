@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 import { storage } from "../apis/f-base";
 
@@ -40,6 +42,9 @@ const FileInput = styled.input`
 
 const ImageBox = styled.div`
   margin-left: 1rem;
+  > svg {
+    margin-left: 3rem;
+  }
   > img {
     border-radius: 1rem;
     width: 10rem;
@@ -153,6 +158,7 @@ const UploadImageForm = ({
       />
       <ImageUploadContainer>
         <ImageBox>
+          {!imageURL && <FontAwesomeIcon icon={faImage} size="3x" />}
           {imageURL &&
             (imageURL.includes("firebasestorage") ? (
               <img src={imageURL} alt={imageURL.split("/")[7].split("?")[0]} />

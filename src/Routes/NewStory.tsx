@@ -34,13 +34,13 @@ const TagContainer = styled.div`
       justify-content: center;
       align-items: center;
       list-style: none;
-      font-size: 0.7em;
+      font-size: 0.5em;
       margin: 0.5rem;
       word-break: keep-all;
       border-radius: 10px;
       color: #ffffff;
       background-color: #ff8f00;
-      padding: 10px;
+      padding: 7px;
       > span {
         > svg {
           cursor: pointer;
@@ -53,33 +53,36 @@ const TagContainer = styled.div`
 `;
 
 const TagInput = styled.input`
-  width: 220px;
+  width: 100%;
   height: 2rem;
-  border: 1px solid #ff8f00;
+  border: none;
   border-radius: 10px;
+  background: #ffe0b2;
+
   font-size: 0.8rem;
   outline: none;
   padding: 1rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 
   ::placeholder {
-    color: #ff8f00;
+    color: #8d8d8d;
     font-size: 0.8rem;
   }
 `;
 
 const ContentInput = styled.textarea`
   height: 20rem;
-  border: 1px solid #ff8f00;
+  border: none;
   border-radius: 10px;
-  font-size: 1rem;
+  background: #ffe0b2;
+  font-size: 0.8rem;
   outline: none;
-  margin: 1rem 0;
   line-height: 1.7rem;
   padding: 1rem;
 
   ::placeholder {
-    color: #ff8f00;
+    color: #8d8d8d;
     font-size: 0.8rem;
   }
 `;
@@ -105,7 +108,6 @@ const BackBtn = styled.span`
   width: 4rem;
   height: 2rem;
   padding: 8px;
-  margin-right: 0.5rem;
 
   :hover {
     border: none;
@@ -129,6 +131,7 @@ const RegisterBtn = styled.span`
   width: 7rem;
   height: 2rem;
   padding: 8px;
+  margin-right: 0.5rem;
 
   :hover {
     border: none;
@@ -205,6 +208,11 @@ const NewStory = () => {
   };
 
   const onSubmit = async () => {
+    if (!story.category || !story.title || !story.content) {
+      alert("스토리의 카테고리, 제목, 내용은 필수 입력 사항입니다.");
+      return;
+    }
+
     const storyObj = {
       ...story,
       writtenAt: Date.now(),
@@ -244,7 +252,6 @@ const NewStory = () => {
           ))}
         </Select>
       </FormControl>
-
       <Box
         component="form"
         sx={{
@@ -270,7 +277,7 @@ const NewStory = () => {
         <TagInput
           type="text"
           onKeyUp={(event) => (event.key === "Enter" ? addTag(event) : null)}
-          placeholder="태그입력! 원하는 태그를 적고 Enter!"
+          placeholder="태그"
         />
         <ul>
           {story.tags.map((el, index) => {
@@ -285,15 +292,14 @@ const NewStory = () => {
           })}
         </ul>
       </TagContainer>
-
       <ContentInput
         name="content"
         placeholder="내용을 작성하세요."
         value={story.content}
         onChange={onChange}
       />
-
       <BtnContainer>
+        <RegisterBtn onClick={onSubmit}>새 스토리 등록</RegisterBtn>
         <BackBtn
           onClick={() => {
             navigate("/");
@@ -301,7 +307,6 @@ const NewStory = () => {
         >
           <span>나가기</span>
         </BackBtn>
-        <RegisterBtn onClick={onSubmit}>새 스토리 등록</RegisterBtn>
       </BtnContainer>
     </NewStoryContainer>
   );

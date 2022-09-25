@@ -26,14 +26,16 @@ const StoryInfoContainer = styled.div`
   display: flex;
   margin-bottom: 0.5rem;
 `;
+
 const EditBtn = styled.div`
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
+  margin-top: 2rem;
   > span {
     font-size: 1.4rem;
-    color: #e040fb;
-    margin-left: 1.2rem;
+    color: #90a4ae;
+    margin: 0 0.7rem;
   }
 `;
 
@@ -131,16 +133,6 @@ const Story = () => {
         <EditStory story={currentStory} setIsEdit={setIsEdit} />
       ) : (
         <StoryContainer>
-          {currentStory?.writerId === id && (
-            <EditBtn>
-              <span onClick={toggleEdit}>
-                <FontAwesomeIcon icon={faFilePen} />
-              </span>
-              <span onClick={onDeleteClick}>
-                <FontAwesomeIcon icon={faTrash} />
-              </span>
-            </EditBtn>
-          )}
           <StoryInfoContainer>
             <WriterProfileImg
               src={currentStory?.writer_profile_image}
@@ -174,6 +166,16 @@ const Story = () => {
           )}
           <Title>{currentStory?.title}</Title>
           <Content>{currentStory?.content}</Content>
+          {currentStory?.writerId === id && (
+            <EditBtn>
+              <span onClick={toggleEdit}>
+                <FontAwesomeIcon icon={faFilePen} />
+              </span>
+              <span onClick={onDeleteClick}>
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+            </EditBtn>
+          )}
         </StoryContainer>
       )}
     </>

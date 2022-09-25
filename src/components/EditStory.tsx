@@ -51,33 +51,36 @@ const TagContainer = styled.div`
 `;
 
 const TagInput = styled.input`
-  width: 220px;
+  width: 100%;
   height: 2rem;
-  border: 1px solid #ff8f00;
+  border: none;
   border-radius: 10px;
+  background: #ffe0b2;
+
   font-size: 0.8rem;
   outline: none;
   padding: 1rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 
   ::placeholder {
-    color: #ff8f00;
+    color: #8d8d8d;
     font-size: 0.8rem;
   }
 `;
 
 const ContentInput = styled.textarea`
   height: 20rem;
-  border: 1px solid #ff8f00;
+  border: none;
   border-radius: 10px;
-  font-size: 1rem;
+  background: #ffe0b2;
+  font-size: 0.8rem;
   outline: none;
-  margin: 1rem 0;
   line-height: 1.7rem;
   padding: 1rem;
 
   ::placeholder {
-    color: #ff8f00;
+    color: #8d8d8d;
     font-size: 0.8rem;
   }
 `;
@@ -243,7 +246,7 @@ const EditStory = ({
         <TagInput
           type="text"
           onKeyUp={(event) => (event.key === "Enter" ? addTag(event) : null)}
-          placeholder="태그입력! 원하는 태그를 적고 Enter!"
+          placeholder="태그"
         />
         <ul>
           {newStory.tags.map((el, index) => {
