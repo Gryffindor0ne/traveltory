@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faPen } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import { removeTag } from "../storySlice";
+import { removeCategory, removeTag } from "../storySlice";
 import { useAppDispatch } from "../hooks";
 
 const Container = styled.div`
@@ -48,6 +48,7 @@ function NavBar() {
             to="/"
             onClick={() => {
               dispatch(removeTag());
+              dispatch(removeCategory());
             }}
           >
             <LogoImg src="/images/logo.png" alt="logo" />
@@ -59,6 +60,7 @@ function NavBar() {
                 to="/story/new"
                 onClick={() => {
                   dispatch(removeTag());
+                  dispatch(removeCategory());
                 }}
               >
                 <FontAwesomeIcon icon={faPen} color={"#ff8f00"} />

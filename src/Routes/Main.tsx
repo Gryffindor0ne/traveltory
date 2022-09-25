@@ -5,7 +5,14 @@ import styled from "styled-components";
 import { dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { StoryInfo, storyData, updateStory } from "../storySlice";
+import {
+  StoryInfo,
+  storyData,
+  updateStory,
+  removeTag,
+  removeCategory,
+} from "../storySlice";
+import Category from "@components/Category";
 
 const Container = styled.div`
   display: flex;
@@ -15,12 +22,15 @@ const Container = styled.div`
 `;
 
 const Main = () => {
-  const { stories, tag } = useAppSelector(storyData);
+  const { stories, tag, category } = useAppSelector(storyData);
   const dispatch = useAppDispatch();
 
   const [selectedStoriesByTag, setSelectedStoriesByTag] = useState<StoryInfo[]>(
     []
   );
+  const [selectedStoriesByCategory, setSelectedStoriesByCategory] = useState<
+    StoryInfo[]
+  >([]);
 
   useEffect(() => {
     const q = query(
@@ -40,19 +50,37 @@ const Main = () => {
   useEffect(() => {
     if (tag) {
       setSelectedStoriesByTag(stories.filter((el) => el.tags.includes(tag)));
+      dispatch(removeCategory());
     }
   }, [tag, stories]);
 
+  useEffect(() => {
+    if (category) {
+      if (category === "total") {
+        setSelectedStoriesByCategory([]);
+      } else {
+        setSelectedStoriesByCategory(
+          stories.filter((el) => el.category.includes(category))
+        );
+      }
+      dispatch(removeTag());
+    }
+  }, [category]);
+
   console.log(tag);
-
-  console.log(stories);
-
   console.log(selectedStoriesByTag);
+  console.log(category);
+  console.log(selectedStoriesByCategory);
 
   return (
     <Container>
+      <Category />
       {tag.length !== 0
         ? selectedStoriesByTag.map((story) => (
+            <ShortStories story={story} key={story.id} />
+          ))
+        : category.length !== 0 && category !== "total"
+        ? selectedStoriesByCategory.map((story) => (
             <ShortStories story={story} key={story.id} />
           ))
         : stories.map((story) => <ShortStories story={story} key={story.id} />)}

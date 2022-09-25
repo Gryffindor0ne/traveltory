@@ -17,11 +17,13 @@ export type StoryInfo = {
 export type StoryDataType = {
   stories: StoryInfo[];
   tag: string;
+  category: string;
 };
 
 const initialState: StoryDataType = {
   stories: [],
   tag: "",
+  category: "total",
 };
 
 export const storySlice = createSlice({
@@ -39,10 +41,18 @@ export const storySlice = createSlice({
     removeTag: (state) => {
       state.tag = "";
     },
+    addCategory: (state, action: PayloadAction<string>) => {
+      console.log(action.payload);
+      state.category = action.payload;
+    },
+    removeCategory: (state) => {
+      state.category = "total";
+    },
   },
 });
 
-export const { updateStory, addTag, removeTag } = storySlice.actions;
+export const { updateStory, addTag, removeTag, addCategory, removeCategory } =
+  storySlice.actions;
 
 export const storyData = (state: RootState) => state.stories;
 
