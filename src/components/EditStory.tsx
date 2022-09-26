@@ -11,9 +11,25 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+import { styled as styledM } from "@mui/material/styles";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+
+const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
+  "&:hover": {
+    color: "#ff6e40",
+    opacity: 1,
+  },
+  "&.MenuItem.Mui-selected": {
+    color: "#ff6e40",
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  "&.Mui-focusVisible": {
+    backgroundColor: "#d1eaff",
+  },
+}));
 
 const EditStoryContainer = styled.div`
   display: flex;
@@ -215,9 +231,9 @@ const EditStory = ({
           onChange={handleSelect}
         >
           {selectList.map((option) => (
-            <MenuItem value={option.value} key={option.value}>
+            <CustomMenuItem value={option.value} key={option.value}>
               {option.name}
-            </MenuItem>
+            </CustomMenuItem>
           ))}
         </Select>
       </FormControl>

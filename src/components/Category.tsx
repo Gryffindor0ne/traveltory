@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 import { selectList } from "@routes/NewStory";
-import Slider from "./Slider";
+import TabsBtn from "./Tabs";
 
 const CategoryContainer = styled.div`
   display: flex;
   width: 100%;
-  max-width: 320px;
+  max-width: 330px;
   margin-bottom: 2rem;
-  overflow: hidden;
 `;
 
 export type CategoryInfo = {
@@ -22,7 +21,7 @@ const Category = () => {
 
   return (
     <CategoryContainer>
-      <Slider categoryList={categoryList} />
+      <TabsBtn categoryList={categoryList} />
     </CategoryContainer>
   );
 };

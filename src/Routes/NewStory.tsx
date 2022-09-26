@@ -12,10 +12,25 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+import { styled as styledM } from "@mui/material/styles";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+
+const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
+  "&:hover": {
+    color: "#ff6e40",
+    opacity: 1,
+  },
+  "&.MenuItem.Mui-selected": {
+    color: "#ff6e40",
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  "&.Mui-focusVisible": {
+    backgroundColor: "#d1eaff",
+  },
+}));
 
 const NewStoryContainer = styled.div`
   display: flex;
@@ -237,7 +252,6 @@ const NewStory = () => {
       <FormControl variant="standard" sx={{ m: 1, width: "12ch" }}>
         <InputLabel id="demo-simple-select-standard-label">카테고리</InputLabel>
         <Select
-          color="warning"
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           value={story.category}
@@ -246,9 +260,9 @@ const NewStory = () => {
           onChange={handleSelect}
         >
           {selectList.map((option) => (
-            <MenuItem value={option.value} key={option.value}>
+            <CustomMenuItem value={option.value} key={option.value}>
               {option.name}
-            </MenuItem>
+            </CustomMenuItem>
           ))}
         </Select>
       </FormControl>
@@ -261,7 +275,6 @@ const NewStory = () => {
         autoComplete="off"
       >
         <TextField
-          color="warning"
           id="standard-basic"
           label="제목"
           variant="standard"
