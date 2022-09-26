@@ -1,46 +1,156 @@
-# Getting Started with Create React App
+# My Traveltory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 여행의 느낌을 나만의 감성으로 기록하고 공유하는 플랫폼을 만들어보고자 했습니다.
 
-## Available Scripts
+## 목차
 
-In the project directory, you can run:
+1. [빠른 시작](#빠른-시작)
+2. [메인 화면](#메인-화면)
+3. [프로젝트 구현 기능](#프로젝트-구현-기능)
+4. [기술 스택](#🛠-기술-스택)
+5. [페이지 및 기능 설명](#페이지-및-기능-설명)
 
-### `npm start`
+# 빠른 시작
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+git clone https://github.com/Gryffindor0ne/traveltory.git
+npm install
+npm run start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# 메인 화면
 
-### `npm test`
+<img width="470" alt="로그인1" src="https://user-images.githubusercontent.com/79234473/192192255-43b15323-e0ab-45d5-a312-bdeb05e9c802.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 프로젝트 구현 기능
 
-### `npm run build`
+1. 소셜 로그인이 가능합니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - 구글, 페이스북, 네이버 로그인 3가지 소셜 로그인으로 앱 이용이 가능합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. 로그인 후 유저는 해당 앱의 스토리 목록을 간략히 볼 수 있습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - 마이 트레블토리 앱 메인 페이지는 스토리 목록을 볼 수 있게 구성되었습니다.
 
-### `npm run eject`
+   - 스토리 목록은 최신 날짜 순으로 볼 수 있습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. 유저는 스토리를 기록할 수 있습니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - 메뉴바의 연필 버튼을 클릭하면 유저는 스토리 작성페이지로 이동하여 새 스토리를 작성할 수 있습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   - 새 스토리 작성 후 완료하면 해당 스토리는 메인 페이지의 최상단으로 등록됩니다.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. 유저는 자신이 쓴 스토리를 수정하거나 삭제할 수 있습니다.
 
-## Learn More
+   - 상세페이지에서 수정, 삭제 버튼을 클릭하여 해당 스토리를 수정하거나 삭제할 수 있습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - 자신이 쓴 스토리만 수정, 삭제 버튼이 생성됩니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. 유저는 메인페이지에서 스토리를 선택하면 해당 스토리를 상세히 볼 수 있습니다.
+
+   - 메인페이지에서 원하는 스토리를 클릭하면 해당 스토리의 상세페이지로 이동합니다.
+
+   - 스토리 상세페이지에서는 스토리의 내용을 자세히 볼 수 있습니다.
+
+6. 카테고리를 클릭하면 해당 카테고리에 해당하는 모든 스토리가 겁색됩니다.
+
+   - 메인페이지의 카테고리 클릭시 해당 카테고리에 해당하는 스토리 목록을 볼 수 있게 구현하였습니다.
+
+7. 태그를 클릭하면 해당 태그가 포함된 모든 스토리가 검색됩니다.
+
+   - 스토리에 있는 태그 클릭시 해당 태그만 포함된 스토리 목록을 볼 수 있게 구현하였습니다.
+
+8. 유저는 내가 쓴 스토리만 따로 볼 수 있습니다.
+
+   - 프로필 페이지에서는 자신이 쓴 모든 스토리 목록을 볼 수 있습니다.
+
+# 페이지 및 기능 설명
+
+## 스토리 메인 페이지("/")
+
+- 마이 트레블토리 앱의 메인 페이지입니다.
+
+- 카테고리 클릭시 선택한 카테고리에 해당하는 스토리만 보여집니다.
+
+  - 카테고리의 기본 값은 '전체'입니다.
+
+  - 카테고리는 '국내여행', '해외여행', '당일치기', '홀로가기', '함께가기', '여행노하우' 로 구성되어 있습니다.
+
+- 스토리 목록을 최신순으로 간략하게 보여줍니다.
+
+  - 스토리 목록의 이미지, 제목, 내용 부분 클릭시 해당 스토리의 상세페이지로 이동합니다.
+
+  - 스토리 목록의 태그를 클릭하면 해당 태그가 포함된 스토리만 필터링됩니다.
+
+## 스토리 상세페이지 ("/story/[해당 스토리 id]")
+
+- 스토리 목록에서 선택된 스토리의 모든 내용을 볼 수 있습니다.
+
+- 스토리의 태그를 클릭하면 해당 태그만 포함된 글 목록으로 이동합니다.
+
+- 유저 본인이 작성한 스토리라면 수정, 삭제를 할 수 있습니다. (수정, 삭제 버튼 활성화)
+
+  - 수정 버튼 클릭시 스토리 수정페이지로 이동합니다.
+
+  - 스토리 수정페이지에서는 스토리를 수정하거나 스토리 수정을 취소할 수 있습니다.
+
+  - 삭제 버튼 클릭시 경고 메세지가 활성화되고 확인하면 스토리가 삭제됩니다.
+
+## 스토리 작성페이지 ("/story/new")
+
+- 상단 메뉴바의 연필 버튼을 클릭하면 새 스토리 작성이 가능합니다.
+
+- 이미지, 카테고리, 제목, 태그, 내용을 작성하고 새 스토리를 등록합니다.
+
+  - 카테고리, 제목, 내용은 필수 입력 사항입니다.
+
+- 태그 입력란에 원하는 태그를 적어 엔터키를 누르면 태그가 추가됩니다.
+
+  - 입력된 태그는 `x`버튼을 클릭할 시 삭제 가능합니다.
+
+- '새 스토리 등록' 버튼을 눌러 새 글을 작성하면 작성된 날짜가 자동으로 입력됩니다.
+
+- '나가기' 버튼을 누르면 새 스토리 작성이 취소됩니다.
+
+## 프로필 페이지("/profile")
+
+- 상단 메뉴바의 사람 버튼을 클릭하면 프로필 페이지로 이동합니다.
+
+- 프로필 페이지에서는 유저 닉네임과 이메일, 프로필 사진이 보여집니다.
+
+- 유저가 작성한 스토리가 있다면 해당 스토리 목록이 보여지고, 없다면 '작성한 스토리가 없습니다.' 가 보여집니다.
+
+- 페이지의 최하단에 `LogOut`버튼이 존재하며 클릭시 로그아웃됩니다.
+
+## 메뉴바
+
+- 로고, 스토리 작성 버튼(연필모양), 프로필 버튼(사람모양)으로 구성되어 있습니다.
+
+- 로고 클릭시 메인페이지로 이동하며 스토리 전체 목록을 보여줍니다.
+
+- 스토리 작성 버튼 클릭시 새 스토리 작성페이지로 이동합니다.
+
+- 프로필 버튼 클릭시 프로필 페이지로 이동합니다.
+
+## 탑버튼
+
+- 앱에서 일정 부분 스크롤하면 탑버튼이 생성됩니다.
+
+- 탑버튼 클릭시 앱의 최상단으로 이동합니다.
+
+---
+
+<br>
+
+# 🛠 기술 스택
+
+<p align='center'>
+   <img src="https://img.shields.io/badge/TypeScript-^18.2.0-darkblue?logo=TypeScript"/>
+    <img src="https://img.shields.io/badge/React-^18.2.0-blue?logo=React"/>
+    <img src="https://img.shields.io/badge/react_router_dom-^6.4.0-critical?logo=React Table"/>
+    <img src="https://img.shields.io/badge/node.js-v16.15.0-green?logo=Node.js"/>
+    <img src="https://img.shields.io/badge/firebase-^9.9.4-yellow?logo=firebase"/>
+    <img src="https://img.shields.io/badge/redux-%5E4.0.0-purple?logo=redux"/>
+    <img src="https://img.shields.io/badge/styled_Components-^5.3.5-pink?logo=styledComponents"/>
+   
+</p>
