@@ -1,14 +1,22 @@
+<img width="50" alt="로그인1" src= https://user-images.githubusercontent.com/79234473/192390195-9604cc7f-9392-4df5-a469-fc774bb1b489.png>
+
 # My Traveltory
 
 > 여행의 느낌을 나만의 감성으로 기록하고 공유하는 플랫폼을 만들어보고자 했습니다.
+
+<br>
+
+## [My Traveltory](https://my-traveltory.web.app/) 🚀
+
+<br>
 
 ## 목차
 
 1. [빠른 시작](#빠른-시작)
 2. [메인 화면](#메인-화면)
 3. [프로젝트 구현 기능](#프로젝트-구현-기능)
-4. [기술 스택](#🛠-기술-스택)
-5. [페이지 및 기능 설명](#페이지-및-기능-설명)
+4. [페이지 및 기능 설명](#페이지-및-기능-설명)
+5. [기술 스택](#기술-스택)
 
 # 빠른 시작
 
@@ -63,6 +71,8 @@ npm run start
 8. 유저는 내가 쓴 스토리만 따로 볼 수 있습니다.
 
    - 프로필 페이지에서는 자신이 쓴 모든 스토리 목록을 볼 수 있습니다.
+
+<br>
 
 # 페이지 및 기능 설명
 
@@ -138,11 +148,9 @@ npm run start
 
 - 탑버튼 클릭시 앱의 최상단으로 이동합니다.
 
----
-
 <br>
 
-# 🛠 기술 스택
+# 기술 스택
 
 <p align='center'>
    <img src="https://img.shields.io/badge/TypeScript-^18.2.0-darkblue?logo=TypeScript"/>
