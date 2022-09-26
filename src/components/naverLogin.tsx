@@ -1,10 +1,10 @@
-import { useAppDispatch } from "../hooks";
 import { useEffect } from "react";
-import { setLoginState, setNaverLoginState } from "../loginSlice";
 import { useNavigate } from "react-router-dom";
-import { setUser } from "../userSlice";
 import styled from "styled-components";
 
+import { setUser } from "../userSlice";
+import { useAppDispatch } from "../hooks";
+import { setLoginState, setNaverLoginState } from "../loginSlice";
 declare global {
   interface Window {
     naver: any;
@@ -35,8 +35,6 @@ const Naver = () => {
 
   const getUser = async () => {
     await naverLogin.getLoginStatus((status: any) => {
-      console.log(status);
-      console.log(naverLogin.user);
       if (status) {
         dispatch(setLoginState(true));
         dispatch(setNaverLoginState(true));

@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from "react";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
+
 import { styled as styledM } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import LinearProgress, {
@@ -10,7 +11,7 @@ import LinearProgress, {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-import { storage } from "../apis/f-base";
+import { storage } from "@apis/f-base";
 
 const BorderLinearProgress = styledM(LinearProgress)(({ theme }) => ({
   height: 10,

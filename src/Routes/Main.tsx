@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
+import Category from "@components/Category";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import {
   StoryInfo,
@@ -12,7 +13,6 @@ import {
   removeTag,
   removeCategory,
 } from "../storySlice";
-import Category from "@components/Category";
 
 const Container = styled.div`
   display: flex;

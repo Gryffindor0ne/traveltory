@@ -31,18 +31,15 @@ export const storySlice = createSlice({
   initialState,
   reducers: {
     updateStory: (state, action: PayloadAction<StoryInfo[]>) => {
-      console.log(action.payload);
       state.stories = action.payload;
     },
     addTag: (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
       state.tag = action.payload;
     },
     removeTag: (state) => {
       state.tag = "";
     },
     addCategory: (state, action: PayloadAction<string>) => {
-      console.log(action.payload);
       state.category = action.payload;
     },
     removeCategory: (state) => {

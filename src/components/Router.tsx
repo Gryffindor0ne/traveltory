@@ -3,12 +3,12 @@ import styled from "styled-components";
 
 import Auth from "@routes/Auth";
 import Main from "@routes/Main";
-import { useAppSelector } from "../hooks";
-import { checkLoginState } from "../loginSlice";
-import NavBar from "@components/NavBar";
 import Profile from "@routes/Profile";
 import New from "@routes/NewStory";
 import Story from "@routes/Story";
+import NavBar from "@components/NavBar";
+import { useAppSelector } from "../hooks";
+import { checkLoginState } from "../loginSlice";
 import TopButton from "./TopButton";
 
 const Container = styled.div`

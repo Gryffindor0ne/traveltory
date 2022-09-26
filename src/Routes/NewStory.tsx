@@ -1,10 +1,6 @@
-import { dbService } from "@apis/f-base";
-import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
-import ImageUploadForm from "@components/ImageUploadForm";
-import { useAppSelector } from "../hooks";
-import { userState } from "../userSlice";
 import { useNavigate } from "react-router-dom";
+import { addDoc, collection } from "firebase/firestore";
 
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -17,6 +13,11 @@ import { styled as styledM } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+
+import ImageUploadForm from "@components/ImageUploadForm";
+import { dbService } from "@apis/f-base";
+import { useAppSelector } from "../hooks";
+import { userState } from "../userSlice";
 
 const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
   "&:hover": {
@@ -190,7 +191,6 @@ const NewStory = () => {
 
     setStory({ ...story, [name]: value });
   };
-  console.log(story);
 
   const addTag = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { value } = event.target as HTMLButtonElement;

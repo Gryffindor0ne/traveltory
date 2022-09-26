@@ -16,11 +16,9 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     setLoginState: (state, action: PayloadAction<boolean>) => {
-      console.log(action.payload);
       state.loginState = action.payload;
     },
     setNaverLoginState: (state, action: PayloadAction<boolean>) => {
-      console.log(action.payload);
       state.loginState = action.payload;
     },
   },

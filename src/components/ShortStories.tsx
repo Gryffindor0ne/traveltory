@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { selectList } from "@routes/NewStory";
-import { StoryInfo } from "../storySlice";
 import { koreanDateFormatter } from "@utils/dateUtils";
+import { StoryInfo } from "../storySlice";
 import Tags from "./Tags";
 
 const StoryInfoContainer = styled.div`

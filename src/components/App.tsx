@@ -1,7 +1,7 @@
-import { authService } from "@apis/f-base";
 import React, { useEffect, useState } from "react";
 
 import AppRouter from "./Router";
+import { authService } from "@apis/f-base";
 import { useAppDispatch } from "../hooks";
 import { setLoginState, setNaverLoginState } from "../loginSlice";
 import { setUser } from "../userSlice";
@@ -32,7 +32,6 @@ function App() {
         dispatch(setUser({ ...naverLogin.user }));
       } else {
         authService.onAuthStateChanged(async (user) => {
-          console.log(user);
           if (user) {
             dispatch(setLoginState(true));
             dispatch(
