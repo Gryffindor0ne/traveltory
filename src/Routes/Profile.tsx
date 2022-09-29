@@ -6,7 +6,7 @@ import { signOut } from "firebase/auth";
 import { authService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { setLoginState, setNaverLoginState } from "../loginSlice";
+import { setLoginState } from "../loginSlice";
 import { userState } from "../userSlice";
 import { storyData, StoryInfo } from "../storySlice";
 
@@ -96,7 +96,6 @@ const Profile = () => {
     localStorage.clear();
     signOut(authService);
     dispatch(setLoginState(false));
-    dispatch(setNaverLoginState(false));
     navigate("/");
   };
 

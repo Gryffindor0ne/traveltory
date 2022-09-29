@@ -1,4 +1,4 @@
-<img width="50" alt="로그인1" src= https://user-images.githubusercontent.com/79234473/192390195-9604cc7f-9392-4df5-a469-fc774bb1b489.png>
+<img width="50" alt="로고" src= https://user-images.githubusercontent.com/79234473/192390195-9604cc7f-9392-4df5-a469-fc774bb1b489.png>
 
 # My Traveltory
 

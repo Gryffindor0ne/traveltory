@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { setUser } from "../userSlice";
 import { useAppDispatch } from "../hooks";
-import { setLoginState, setNaverLoginState } from "../loginSlice";
+import { setLoginState } from "../loginSlice";
 declare global {
   interface Window {
     naver: any;
@@ -37,7 +37,6 @@ const Naver = () => {
     await naverLogin.getLoginStatus((status: any) => {
       if (status) {
         dispatch(setLoginState(true));
-        dispatch(setNaverLoginState(true));
         dispatch(setUser({ ...naverLogin.user }));
         navigate("/");
         window.close();

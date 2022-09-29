@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import AppRouter from "./Router";
 import { authService } from "@apis/f-base";
 import { useAppDispatch } from "../hooks";
-import { setLoginState, setNaverLoginState } from "../loginSlice";
+import { setLoginState } from "../loginSlice";
 import { setUser } from "../userSlice";
 
 declare global {
@@ -28,7 +28,7 @@ function App() {
     naverLogin.getLoginStatus((status: any) => {
       if (status) {
         dispatch(setLoginState(true));
-        dispatch(setNaverLoginState(true));
+
         dispatch(setUser({ ...naverLogin.user }));
       } else {
         authService.onAuthStateChanged(async (user) => {

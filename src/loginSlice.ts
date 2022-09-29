@@ -3,12 +3,10 @@ import type { RootState } from "./store";
 
 export type loginType = {
   loginState: boolean;
-  naverLoginState: boolean;
 };
 
 const initialState: loginType = {
   loginState: false,
-  naverLoginState: false,
 };
 
 export const loginSlice = createSlice({
@@ -18,13 +16,10 @@ export const loginSlice = createSlice({
     setLoginState: (state, action: PayloadAction<boolean>) => {
       state.loginState = action.payload;
     },
-    setNaverLoginState: (state, action: PayloadAction<boolean>) => {
-      state.loginState = action.payload;
-    },
   },
 });
 
-export const { setLoginState, setNaverLoginState } = loginSlice.actions;
+export const { setLoginState } = loginSlice.actions;
 
 export const checkLoginState = (state: RootState) => state.loginState;
 
