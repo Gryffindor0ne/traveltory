@@ -128,12 +128,7 @@ const ShortStories = ({ story }: { story: StoryInfo }) => {
         }}
       >
         {story.image && (
-          <StoryImg
-            src={story.image}
-            alt={story.writerNickName}
-            width="150px"
-            height="120px"
-          />
+          <StoryImg src={story.image} alt={story.writerNickName} />
         )}
         <Title>{story.title}</Title>
         <Content>{story.content}</Content>
