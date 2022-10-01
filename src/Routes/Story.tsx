@@ -14,6 +14,7 @@ import { dbService, storage } from "@apis/f-base";
 import { storyData, StoryInfo } from "../storySlice";
 import { userState } from "../userSlice";
 import { useAppSelector } from "../hooks";
+import Likes from "@components/Likes";
 
 const StoryContainer = styled.div`
   display: flex;
@@ -101,8 +102,8 @@ const Story = () => {
   const { stories } = useAppSelector(storyData);
   const { id } = useAppSelector(userState);
 
-  const [currentStory, setCurrentStory] = useState<StoryInfo | undefined>();
   const [isEdit, setIsEdit] = useState(false);
+  const [currentStory, setCurrentStory] = useState<StoryInfo | undefined>();
 
   useEffect(() => {
     if (currentId) {
@@ -121,6 +122,7 @@ const Story = () => {
       navigate("/");
     }
   };
+  console.log(id);
 
   const toggleEdit = () => setIsEdit((prev) => !prev);
 
@@ -148,6 +150,7 @@ const Story = () => {
                 <span>{koreanDateFormatter(currentStory?.writtenAt)}</span>
               </span>
             </StoryInfoBox>
+            <Likes storyId={id} story={currentStory} />
           </StoryInfoContainer>
 
           <TagContainer>

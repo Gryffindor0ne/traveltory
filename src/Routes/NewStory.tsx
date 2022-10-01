@@ -162,6 +162,7 @@ type StoryData = {
   title: string;
   content: string;
   tags: string[];
+  likes: string[];
 };
 
 export const selectList = [
@@ -180,6 +181,7 @@ const NewStory = () => {
     title: "",
     content: "",
     tags: [],
+    likes: [],
   });
   const [imageURL, setImageURL] = useState<string>("");
   const { id, nickname, profile_image } = useAppSelector(userState);
@@ -241,7 +243,13 @@ const NewStory = () => {
     } catch (error) {
       console.log(error);
     }
-    setStory({ category: "카테고리 선택", title: "", content: "", tags: [] });
+    setStory({
+      category: "카테고리 선택",
+      title: "",
+      content: "",
+      tags: [],
+      likes: [],
+    });
     setImageURL("");
     navigate("/");
   };

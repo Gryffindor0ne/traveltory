@@ -8,6 +8,7 @@ export type StoryInfo = {
   content: string;
   image: string;
   tags: string[];
+  likes: string[];
   writtenAt: string;
   writerId: string;
   writerNickName: string;
