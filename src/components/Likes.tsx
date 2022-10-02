@@ -22,21 +22,20 @@ const LikesContainer = styled.div`
 `;
 
 const Likes = ({
-  storyId,
+  userId,
   story,
 }: {
   story: StoryInfo | undefined;
-  storyId: string | undefined;
+  userId: string | undefined;
 }) => {
   const [like, setLike] = useState(false);
 
   useEffect(() => {
     if (story) {
       const currentLike =
-        story?.likes.filter((item) => item === storyId).length === 0
+        story?.likes.filter((item) => item === userId).length === 0
           ? false
           : true;
-      console.log(currentLike);
       setLike(currentLike);
     }
   }, [story]);
@@ -45,7 +44,7 @@ const Likes = ({
     if (!like) {
       const storyObj = {
         ...story,
-        likes: [...(story?.likes as []), storyId],
+        likes: [...(story?.likes as []), userId],
       };
       try {
         await updateDoc(doc(dbService, "stories", `${story?.id}`), storyObj);
@@ -53,7 +52,7 @@ const Likes = ({
         console.log(error);
       }
     } else {
-      const filteredLikes = story?.likes.filter((item) => item !== storyId);
+      const filteredLikes = story?.likes.filter((item) => item !== userId);
       const storyObj = {
         ...story,
         likes: filteredLikes,
@@ -64,10 +63,7 @@ const Likes = ({
         console.log(error);
       }
     }
-    // setLike((prev: boolean) => !prev);
   };
-
-  console.log(story);
 
   return (
     <LikesContainer>

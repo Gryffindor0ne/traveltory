@@ -20,8 +20,8 @@ function App() {
 
   const naverLogin = new naver.LoginWithNaverId({
     clientId: process.env.REACT_APP_NAVER_CLIENT_ID,
-    callbackUrl: "http://localhost:3000",
-    // callbackUrl: "https://my-traveltory.web.app",
+    // callbackUrl: "http://localhost:3000",
+    callbackUrl: "https://my-traveltory.web.app",
   });
 
   useEffect(() => {

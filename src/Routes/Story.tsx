@@ -122,7 +122,6 @@ const Story = () => {
       navigate("/");
     }
   };
-  console.log(id);
 
   const toggleEdit = () => setIsEdit((prev) => !prev);
 
@@ -150,7 +149,7 @@ const Story = () => {
                 <span>{koreanDateFormatter(currentStory?.writtenAt)}</span>
               </span>
             </StoryInfoBox>
-            <Likes storyId={id} story={currentStory} />
+            <Likes userId={id} story={currentStory} />
           </StoryInfoContainer>
 
           <TagContainer>

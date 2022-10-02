@@ -4,8 +4,11 @@ import styled from "styled-components";
 
 import { selectList } from "@routes/NewStory";
 import { koreanDateFormatter } from "@utils/dateUtils";
-import { StoryInfo } from "../storySlice";
 import Tags from "./Tags";
+import Likes from "./Likes";
+import { useAppSelector } from "../hooks";
+import { StoryInfo } from "../storySlice";
+import { userState } from "../userSlice";
 
 const StoryInfoContainer = styled.div`
   display: flex;
@@ -88,15 +91,31 @@ const Content = styled.div`
     margin-top: 0.2rem;
     background: white;
   }
-  margin-bottom: 1rem;
 `;
 
 const TagContainer = styled.div`
   display: flex;
 `;
 
+const LikesContainer = styled.div`
+  display: flex;
+  margin-bottom: 3rem;
+
+  > div {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    font-size: 0.8rem;
+
+    > span {
+      margin-left: 0.7rem;
+    }
+  }
+`;
+
 const ShortStories = ({ story }: { story: StoryInfo }) => {
   const navigate = useNavigate();
+  const { id } = useAppSelector(userState);
   return (
     <>
       <StoryInfoContainer>
@@ -133,6 +152,12 @@ const ShortStories = ({ story }: { story: StoryInfo }) => {
         <Title>{story.title}</Title>
         <Content>{story.content}</Content>
       </StoryBox>
+      <LikesContainer>
+        <div>
+          <Likes story={story} userId={id} />
+          <span>{story.likes.length}</span>
+        </div>
+      </LikesContainer>
     </>
   );
 };
