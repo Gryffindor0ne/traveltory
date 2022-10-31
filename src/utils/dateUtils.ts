@@ -20,7 +20,7 @@ export const koreanDateFormatter = (date: string | undefined) => {
     return `${intervalH}시간 전`;
   } else if (intervalD < 7) {
     return `${intervalD}일 전`;
-  } else if (intervalW < 4) {
+  } else if (intervalW <= 4) {
     return `${intervalW}주 전`;
   } else if (intervalMonth < 4) {
     return `${intervalMonth}달 전`;
