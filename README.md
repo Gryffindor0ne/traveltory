@@ -167,7 +167,7 @@ npm run start
 # 기술 스택
 
 <p align='center'>
-   <img src="https://img.shields.io/badge/TypeScript-^18.2.0-darkblue?logo=TypeScript"/>
+   <img src="https://img.shields.io/badge/TypeScript-^4.8.3-darkblue?logo=TypeScript"/>
     <img src="https://img.shields.io/badge/React-^18.2.0-blue?logo=React"/>
     <img src="https://img.shields.io/badge/react_router_dom-^6.4.0-critical?logo=React Table"/>
     <img src="https://img.shields.io/badge/node.js-v16.15.0-green?logo=Node.js"/>
