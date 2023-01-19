@@ -16,9 +16,9 @@ const { naver } = window;
 const AuthBtn = styled.button`
   width: 100%;
   border: none;
-  background: white;
   cursor: pointer;
   padding: 10px 0px;
+  background: #f9a825;
 `;
 
 const Naver = () => {

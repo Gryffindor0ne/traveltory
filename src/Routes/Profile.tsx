@@ -128,7 +128,7 @@ const Profile = () => {
         )}
       </MyStoryContainer>
 
-      <LogOutBtn onClick={onLogOutClick}>Logout</LogOutBtn>
+      <LogOutBtn onClick={onLogOutClick}>로그아웃</LogOutBtn>
     </Container>
   );
 };

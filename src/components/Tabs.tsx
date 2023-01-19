@@ -40,7 +40,7 @@ const TabsBtn = ({ categoryList }: { categoryList: CategoryInfo[] }) => {
   }, [category]);
 
   return (
-    <Box sx={{ maxWidth: { xs: 330, sm: 480 }, bgcolor: "background.paper" }}>
+    <Box sx={{ maxWidth: 330, bgcolor: "background.paper" }}>
       <Tabs
         value={value}
         onChange={handleChange}

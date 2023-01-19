@@ -3,6 +3,7 @@ import {
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithPopup,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import styled from "styled-components";
 
@@ -19,10 +20,11 @@ window.addEventListener("resize", setScreenSize);
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
   height: calc(var(--vh, 1vh) * 100);
   justify-content: center;
   align-items: center;
+  background: #f9a825;
 `;
 
 const TitleContainer = styled.div`
@@ -36,12 +38,7 @@ const Title = styled.div`
   font-size: 2.5rem;
   font-weight: bold;
   font-family: "DM Serif Display", serif;
-  color: #f9a825;
-`;
-
-const SubTitle = styled.div`
-  font-size: 1.2rem;
-  margin-top: 2rem;
+  color: white;
 `;
 
 const AuthBtnContainer = styled.div`
@@ -53,12 +50,50 @@ const AuthBtnContainer = styled.div`
   max-width: 320px;
 `;
 
-const UserGuideText = styled.div`
-  font-size: 1rem;
-  margin: 1rem;
+const SelectText = styled.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+const Line = styled.hr`
+  width: 100%;
+  height: 1px;
+  margin: 2rem 3rem;
+  border-width: 0px;
+  border-radius: 0.25rem;
+  background: #eeeeee;
+`;
+const Text = styled.span`
+  position: absolute;
+  padding: 0 1rem;
+  color: #eeeeee;
+  background: #f9a825;
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+`;
+
+const GuestLoginBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 0.5rem;
+  background: #a33030;
+  cursor: pointer;
+  width: 14rem;
+  padding: 13px 0px;
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 `;
 
 const AuthBtns = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   width: 100%;
 `;
@@ -68,23 +103,24 @@ const AuthBtn = styled.button`
   justify-content: center;
   align-items: center;
   border: none;
-  background: white;
   cursor: pointer;
-  width: 20rem;
+  width: 100%;
   padding: 10px 0px;
+  background: #f9a825;
 `;
 
 const GoogleBtnLine = styled.div`
   width: 14.5rem;
   height: 3.3rem;
-  border: solid 1.5px grey;
   border-radius: 10px;
+  padding: 0.2rem;
 `;
 
 const SocialLoginImg = styled.img`
   width: 14rem;
   height: 3.1rem;
   border-radius: 5px;
+  background: #f9a825;
 `;
 
 const Auth = () => {
@@ -100,16 +136,33 @@ const Auth = () => {
     await signInWithPopup(authService, provider);
   };
 
+  const guestLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(
+        authService,
+        `${process.env.REACT_APP_GUEST_LOGIN_EMAIL}`,
+        `${process.env.REACT_APP_GUEST_LOGIN_PASSWORD}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container>
       <TitleContainer>
         <Title>MY</Title>
         <Title>TRAVELTORY</Title>
-        <SubTitle>여행 감성 공유 플랫폼</SubTitle>
       </TitleContainer>
 
       <AuthBtnContainer>
-        <UserGuideText>간편로그인으로 이용하기</UserGuideText>
+        <GuestLoginBtn onClick={guestLogin}>게스트 로그인</GuestLoginBtn>
+
+        <SelectText>
+          <Line />
+          <Text>또는</Text>
+        </SelectText>
+
         <AuthBtns>
           <AuthBtn onClick={onSocialClick} name="google">
             <GoogleBtnLine>

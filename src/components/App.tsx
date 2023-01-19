@@ -40,7 +40,9 @@ function App() {
                 email: user.email,
                 id: user.uid,
                 nickname: user.email?.split("@")[0],
-                profile_image: user.photoURL || null,
+                profile_image:
+                  user.photoURL ||
+                  "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80",
               })
             );
           } else {
