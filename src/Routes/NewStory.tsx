@@ -17,7 +17,7 @@ import styled from "styled-components";
 import ImageUploadForm from "@components/ImageUploadForm";
 import { dbService } from "@apis/f-base";
 import { useAppSelector } from "../hooks";
-import { userState } from "../userSlice";
+import { userState } from "../common/userSlice";
 
 const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
   "&:hover": {

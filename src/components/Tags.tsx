@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { useAppDispatch } from "../hooks";
-import { addTag } from "../storySlice";
+import { addTag } from "../common/storySlice";
 
 const TagBtn = styled.button`
   cursor: pointer;

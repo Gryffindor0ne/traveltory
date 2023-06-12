@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { setUser } from "../userSlice";
+import { setUser } from "../common/userSlice";
 import { useAppDispatch } from "../hooks";
-import { setLoginState } from "../loginSlice";
+import { setLoginState } from "../common/loginSlice";
 declare global {
   interface Window {
     naver: any;

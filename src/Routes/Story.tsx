@@ -11,8 +11,8 @@ import { koreanDateFormatter } from "@utils/dateUtils";
 import Tags from "@components/Tags";
 import EditStory from "@components/EditStory";
 import { dbService, storage } from "@apis/f-base";
-import { storyData, StoryInfo } from "../storySlice";
-import { userState } from "../userSlice";
+import { storyData, StoryInfo } from "../common/storySlice";
+import { userState } from "../common/userSlice";
 import { useAppSelector } from "../hooks";
 import Likes from "@components/Likes";
 

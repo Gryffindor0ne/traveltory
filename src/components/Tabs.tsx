@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 import { CategoryInfo } from "./Category";
-import { addCategory, storyData } from "../storySlice";
+import { addCategory, storyData } from "../common/storySlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
 
 const AntTab = styled(Tab)(({ theme }) => ({

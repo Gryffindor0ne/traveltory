@@ -8,7 +8,7 @@ import New from "@routes/NewStory";
 import Story from "@routes/Story";
 import NavBar from "@components/NavBar";
 import { useAppSelector } from "../hooks";
-import { checkLoginState } from "../loginSlice";
+import { checkLoginState } from "../common/loginSlice";
 import TopButton from "./TopButton";
 
 const Container = styled.div`

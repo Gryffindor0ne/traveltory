@@ -6,9 +6,9 @@ import { signOut } from "firebase/auth";
 import { authService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { setLoginState } from "../loginSlice";
-import { userState } from "../userSlice";
-import { storyData, StoryInfo } from "../storySlice";
+import { setLoginState } from "../common/loginSlice";
+import { userState } from "../common/userSlice";
+import { storyData, StoryInfo } from "../common/storySlice";
 
 const Container = styled.div`
   display: flex;

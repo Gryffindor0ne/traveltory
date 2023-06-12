@@ -7,8 +7,8 @@ import { koreanDateFormatter } from "@utils/dateUtils";
 import Tags from "./Tags";
 import Likes from "./Likes";
 import { useAppSelector } from "../hooks";
-import { StoryInfo } from "../storySlice";
-import { userState } from "../userSlice";
+import { StoryInfo } from "../common/storySlice";
+import { userState } from "../common/userSlice";
 
 const StoryInfoContainer = styled.div`
   display: flex;

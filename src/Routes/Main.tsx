@@ -12,7 +12,7 @@ import {
   updateStory,
   removeTag,
   removeCategory,
-} from "../storySlice";
+} from "../common/storySlice";
 
 const Container = styled.div`
   display: flex;

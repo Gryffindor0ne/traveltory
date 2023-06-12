@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faPen } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import { removeCategory, removeTag } from "../storySlice";
+import { removeCategory, removeTag } from "../common/storySlice";
 import { useAppDispatch } from "../hooks";
 
 const Container = styled.div`
