@@ -56,6 +56,16 @@ const Title = styled.div`
   margin-bottom: 0.5rem;
 `;
 
+const Text = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff8f00;
+  margin: 10rem 0rem;
+`;
+
 const Line = styled.div`
   border: 1px solid #ffab91;
   margin-bottom: 1.5rem;
@@ -88,24 +98,26 @@ const Profile = () => {
   const dispatch = useAppDispatch();
   const { stories } = useAppSelector(storyData);
   const { id, email, nickname, profile_image } = useAppSelector(userState);
+  const [isLoading, setIsLoadging] = useState(true);
   const [selectedStoriesByMine, setSelectedStoriesByMine] = useState<
     StoryInfo[]
   >([]);
 
   const onLogOutClick = () => {
-    localStorage.clear();
     signOut(authService);
     dispatch(setLoginState(false));
     navigate("/");
   };
 
   useEffect(() => {
+    setIsLoadging(true);
     if (id) {
       setSelectedStoriesByMine(
         stories.filter((el) => el.writerId.includes(id))
       );
     }
-  }, [stories]);
+    setIsLoadging(false);
+  }, [stories, id]);
 
   return (
     <Container>
@@ -119,7 +131,9 @@ const Profile = () => {
       <MyStoryContainer>
         <Title>내가 작성한 스토리</Title>
         <Line></Line>
-        {selectedStoriesByMine.length === 0 ? (
+        {isLoading ? (
+          <Text>Loading...</Text>
+        ) : selectedStoriesByMine.length === 0 ? (
           <div>작성한 스토리가 없습니다.</div>
         ) : (
           selectedStoriesByMine.map((story) => (

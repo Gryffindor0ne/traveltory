@@ -10,9 +10,8 @@ import { StoryInfo } from "../storySlice";
 
 const LikesContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  width: 38%;
 
   > span {
     cursor: pointer;
@@ -38,7 +37,7 @@ const Likes = ({
           : true;
       setLike(currentLike);
     }
-  }, [story]);
+  }, [story, userId]);
 
   const handleLikesClick = async () => {
     if (!like) {

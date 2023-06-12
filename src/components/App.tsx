@@ -52,7 +52,7 @@ function App() {
       }
       setLoading(true);
     });
-  }, []);
+  });
 
   return <>{loading ? <AppRouter /> : "Loading..."}</>;
 }

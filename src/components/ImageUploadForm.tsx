@@ -147,7 +147,7 @@ const UploadImageForm = ({
   const onUploadImageButtonClick = useCallback(() => {
     setImageURL("");
     inputRef.current?.click();
-  }, []);
+  }, [setImageURL]);
 
   return (
     <Container>
@@ -165,7 +165,7 @@ const UploadImageForm = ({
             (imageURL.includes("firebasestorage") ? (
               <img src={imageURL} alt={imageURL.split("/")[7].split("?")[0]} />
             ) : (
-              <img src={imageURL} alt="default-Image" />
+              <img src={imageURL} alt="default" />
             ))}
         </ImageBox>
         <ImageBtns>

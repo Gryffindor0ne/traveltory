@@ -25,7 +25,7 @@ const StoryContainer = styled.div`
 
 const StoryInfoContainer = styled.div`
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const EditBtn = styled.div`
@@ -41,12 +41,12 @@ const EditBtn = styled.div`
 `;
 
 const WriterProfileImg = styled.img`
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border: none;
   border-radius: 50%;
   background: #ffab91;
-  margin: 0.5rem 0.5rem 0.5rem 0rem;
+  margin: 0.5rem;
   padding: 0.2rem;
 `;
 
@@ -55,6 +55,7 @@ const StoryInfoBox = styled.div`
   flex-direction: column;
   justify-content: center;
   margin-left: 0.5rem;
+  margin-right: 2rem;
   > div {
     font-weight: bold;
     font-size: 0.9rem;
@@ -68,6 +69,10 @@ const StoryInfoBox = styled.div`
       margin-right: 1rem;
     }
   }
+`;
+
+const StoryContentBox = styled.div`
+  display: flex;
 `;
 
 const StoryImg = styled.img`
@@ -136,20 +141,22 @@ const Story = () => {
               src={currentStory?.writer_profile_image}
               alt={currentStory?.writerNickName}
             />
-            <StoryInfoBox>
-              <div>{currentStory?.writerNickName}</div>
-              <span>
+            <StoryContentBox>
+              <StoryInfoBox>
+                <div>{currentStory?.writerNickName}</div>
                 <span>
-                  {
-                    selectList.find(
-                      (option) => currentStory?.category === option.value
-                    )?.name
-                  }
+                  <span>
+                    {
+                      selectList.find(
+                        (option) => currentStory?.category === option.value
+                      )?.name
+                    }
+                  </span>
+                  <span>{koreanDateFormatter(currentStory?.writtenAt)}</span>
                 </span>
-                <span>{koreanDateFormatter(currentStory?.writtenAt)}</span>
-              </span>
-            </StoryInfoBox>
-            <Likes userId={id} story={currentStory} />
+              </StoryInfoBox>
+              <Likes userId={id} story={currentStory} />
+            </StoryContentBox>
           </StoryInfoContainer>
 
           <TagContainer>
