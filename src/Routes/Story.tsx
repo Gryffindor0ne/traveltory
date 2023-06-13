@@ -61,8 +61,9 @@ const StoryInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 0.5rem;
-  margin-right: 2rem;
+  width: 13rem;
+  margin-left: 0.3rem;
+
   > div {
     font-weight: bold;
     font-size: 0.9rem;
@@ -73,7 +74,7 @@ const StoryInfoBox = styled.div`
     font-size: 0.8rem;
     color: #90a4ae;
     > span {
-      margin-right: 1rem;
+      margin-right: 1.2rem;
     }
   }
 `;
