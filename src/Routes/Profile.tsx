@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { signOut } from "firebase/auth";
 
-import { authService } from "@apis/f-base";
+import { authService, dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
-import { useAppDispatch, useAppSelector } from "../hooks";
-import { setLoginState } from "../common/loginSlice";
-import { userState } from "../common/userSlice";
-import { storyData, StoryInfo } from "../common/storySlice";
+import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
+import { setLoginState } from "@common/loginSlice";
+import { userState } from "@common/userSlice";
+import { storyData, StoryInfo, updateStory } from "@common/storySlice";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 const Container = styled.div`
   display: flex;
@@ -17,6 +18,12 @@ const Container = styled.div`
   align-items: center;
   width: 330px;
   margin: 50px 0;
+`;
+
+const MyInfoContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 const ProfileContainer = styled.div`
@@ -98,9 +105,9 @@ const Profile = () => {
   const dispatch = useAppDispatch();
   const { stories } = useAppSelector(storyData);
   const { id, email, nickname, profile_image } = useAppSelector(userState);
-  const [isLoading, setIsLoadging] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedStoriesByMine, setSelectedStoriesByMine] = useState<
-    StoryInfo[]
+    StoryInfo[] | undefined
   >([]);
 
   const onLogOutClick = () => {
@@ -110,39 +117,58 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    setIsLoadging(true);
+    const q = query(
+      collection(dbService, "stories"),
+      orderBy("writtenAt", "desc")
+    );
+    onSnapshot(q, (snapshot) => {
+      const storyArr = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      dispatch(updateStory(storyArr as StoryInfo[]));
+    });
+  }, [dispatch]);
+
+  useEffect(() => {
     if (id) {
       setSelectedStoriesByMine(
         stories.filter((el) => el.writerId.includes(id))
       );
     }
-    setIsLoadging(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
   }, [stories, id]);
 
   return (
     <Container>
-      <ProfileContainer>
-        <div>
-          <NickName>{nickname}</NickName>
-          <Email>{email}</Email>
-        </div>
-        {profile_image && <ProfileImg src={profile_image} />}
-      </ProfileContainer>
-      <MyStoryContainer>
-        <Title>내가 작성한 스토리</Title>
-        <Line></Line>
-        {isLoading ? (
-          <Text>Loading...</Text>
-        ) : selectedStoriesByMine.length === 0 ? (
-          <div>작성한 스토리가 없습니다.</div>
-        ) : (
-          selectedStoriesByMine.map((story) => (
-            <ShortStories story={story} key={story.id} />
-          ))
-        )}
-      </MyStoryContainer>
+      {isLoading ? (
+        <></>
+      ) : (
+        <MyInfoContainer>
+          <ProfileContainer>
+            <div>
+              <NickName>{nickname}</NickName>
+              <Email>{email}</Email>
+            </div>
+            {profile_image && <ProfileImg src={profile_image} />}
+          </ProfileContainer>
+          <MyStoryContainer>
+            <Title>내가 작성한 스토리</Title>
+            <Line></Line>
+            {selectedStoriesByMine?.length !== 0 ? (
+              selectedStoriesByMine?.map((story) => (
+                <ShortStories story={story} key={story.id} />
+              ))
+            ) : (
+              <Text>작성한 스토리가 없습니다.</Text>
+            )}
+          </MyStoryContainer>
 
-      <LogOutBtn onClick={onLogOutClick}>로그아웃</LogOutBtn>
+          <LogOutBtn onClick={onLogOutClick}>로그아웃</LogOutBtn>
+        </MyInfoContainer>
+      )}
     </Container>
   );
 };

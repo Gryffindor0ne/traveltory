@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 import AppRouter from "./Router";
 import { authService } from "@apis/f-base";
-import { useAppDispatch } from "../hooks";
-import { setLoginState } from "../common/loginSlice";
-import { setUser } from "../common/userSlice";
+import { useAppDispatch } from "@common/hooks/reduxHooks";
+import { setLoginState } from "@common/loginSlice";
+import { setUser } from "@common/userSlice";
 
 declare global {
   interface Window {
@@ -14,8 +15,18 @@ declare global {
 
 const { naver } = window;
 
+const LoadingText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff8f00;
+`;
+
 function App() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
 
   const naverLogin = new naver.LoginWithNaverId({
@@ -30,10 +41,12 @@ function App() {
         dispatch(setLoginState(true));
 
         dispatch(setUser({ ...naverLogin.user }));
+        setLoading(false);
       } else {
         authService.onAuthStateChanged(async (user) => {
           if (user) {
             dispatch(setLoginState(true));
+
             dispatch(
               setUser({
                 name: user.displayName || user.email?.split("@")[0],
@@ -45,16 +58,17 @@ function App() {
                   "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80",
               })
             );
+            setLoading(false);
           } else {
             dispatch(setLoginState(false));
+            setLoading(false);
           }
         });
       }
-      setLoading(true);
     });
   });
 
-  return <>{loading ? <AppRouter /> : "Loading..."}</>;
+  return <>{loading ? <LoadingText>Loading...</LoadingText> : <AppRouter />}</>;
 }
 
 export default App;

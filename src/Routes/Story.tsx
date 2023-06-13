@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteObject, ref } from "firebase/storage";
-import { doc, deleteDoc } from "firebase/firestore";
+import {
+  doc,
+  deleteDoc,
+  query,
+  collection,
+  orderBy,
+  onSnapshot,
+} from "firebase/firestore";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faFilePen } from "@fortawesome/free-solid-svg-icons";
@@ -11,9 +18,9 @@ import { koreanDateFormatter } from "@utils/dateUtils";
 import Tags from "@components/Tags";
 import EditStory from "@components/EditStory";
 import { dbService, storage } from "@apis/f-base";
-import { storyData, StoryInfo } from "../common/storySlice";
-import { userState } from "../common/userSlice";
-import { useAppSelector } from "../hooks";
+import { storyData, StoryInfo, updateStory } from "@common/storySlice";
+import { userState } from "@common/userSlice";
+import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
 import Likes from "@components/Likes";
 
 const StoryContainer = styled.div`
@@ -106,9 +113,24 @@ const Story = () => {
   const navigate = useNavigate();
   const { stories } = useAppSelector(storyData);
   const { id } = useAppSelector(userState);
+  const dispatch = useAppDispatch();
 
   const [isEdit, setIsEdit] = useState(false);
   const [currentStory, setCurrentStory] = useState<StoryInfo | undefined>();
+
+  useEffect(() => {
+    const q = query(
+      collection(dbService, "stories"),
+      orderBy("writtenAt", "desc")
+    );
+    onSnapshot(q, (snapshot) => {
+      const storyArr = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      dispatch(updateStory(storyArr as StoryInfo[]));
+    });
+  }, [dispatch]);
 
   useEffect(() => {
     if (currentId) {

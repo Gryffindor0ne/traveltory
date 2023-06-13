@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { setUser } from "../common/userSlice";
-import { useAppDispatch } from "../hooks";
-import { setLoginState } from "../common/loginSlice";
+import { setUser } from "@common/userSlice";
+import { useAppDispatch } from "@common/hooks/reduxHooks";
+import { setLoginState } from "@common/loginSlice";
 declare global {
   interface Window {
     naver: any;
@@ -57,7 +57,8 @@ const Naver = () => {
     naverLogin.init();
     getUser();
     userAccessToken();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getUser, userAccessToken]);
 
   return <AuthBtn id="naverIdLogin" />;
 };

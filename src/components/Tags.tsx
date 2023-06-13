@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { useAppDispatch } from "../hooks";
-import { addTag } from "../common/storySlice";
+import { useAppDispatch } from "@common/hooks/reduxHooks";
+import { addTag } from "@common/storySlice";
 
 const TagBtn = styled.button`
   cursor: pointer;

@@ -5,14 +5,14 @@ import styled from "styled-components";
 import { dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
 import Category from "@components/Category";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
 import {
   StoryInfo,
-  storyData,
-  updateStory,
   removeTag,
   removeCategory,
-} from "../common/storySlice";
+  updateStory,
+  storyData,
+} from "@common/storySlice";
 
 const Container = styled.div`
   display: flex;
@@ -23,6 +23,7 @@ const Container = styled.div`
 
 const Main = () => {
   const { stories, tag, category } = useAppSelector(storyData);
+
   const dispatch = useAppDispatch();
 
   const [selectedStoriesByTag, setSelectedStoriesByTag] = useState<StoryInfo[]>(
@@ -44,7 +45,7 @@ const Main = () => {
       }));
       dispatch(updateStory(storyArr as StoryInfo[]));
     });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (tag) {
@@ -52,7 +53,7 @@ const Main = () => {
       setSelectedStoriesByCategory([]);
       setSelectedStoriesByTag(stories.filter((el) => el.tags.includes(tag)));
     }
-  }, [tag]);
+  }, [tag, dispatch, stories]);
 
   useEffect(() => {
     if (category) {
@@ -65,7 +66,7 @@ const Main = () => {
         dispatch(removeTag());
       }
     }
-  }, [category]);
+  }, [category, dispatch, stories]);
 
   return (
     <Container>

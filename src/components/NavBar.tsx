@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faPen } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import { removeCategory, removeTag } from "../common/storySlice";
-import { useAppDispatch } from "../hooks";
+import { removeCategory, removeTag } from "@common/storySlice";
+import { useAppDispatch } from "@common/hooks/reduxHooks";
 
 const Container = styled.div`
   display: flex;

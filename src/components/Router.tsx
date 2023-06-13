@@ -7,8 +7,8 @@ import Profile from "@routes/Profile";
 import New from "@routes/NewStory";
 import Story from "@routes/Story";
 import NavBar from "@components/NavBar";
-import { useAppSelector } from "../hooks";
-import { checkLoginState } from "../common/loginSlice";
+import { useAppSelector } from "@common/hooks/reduxHooks";
+import { checkLoginState } from "@common/loginSlice";
 import TopButton from "./TopButton";
 
 const Container = styled.div`
