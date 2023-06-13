@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 
 import AppRouter from "./Router";
 import { authService } from "@apis/f-base";
 import { useAppDispatch } from "@common/hooks/reduxHooks";
 import { setLoginState } from "@common/loginSlice";
 import { setUser } from "@common/userSlice";
+import LoginIndicator from "@components/LoadingIndicator";
 
 declare global {
   interface Window {
@@ -14,16 +14,6 @@ declare global {
 }
 
 const { naver } = window;
-
-const LoadingText = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #ff8f00;
-`;
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -68,7 +58,7 @@ function App() {
     });
   });
 
-  return <>{loading ? <LoadingText>Loading...</LoadingText> : <AppRouter />}</>;
+  return <>{loading ? <LoginIndicator /> : <AppRouter />}</>;
 }
 
 export default App;

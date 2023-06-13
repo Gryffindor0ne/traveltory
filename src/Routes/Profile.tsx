@@ -10,13 +10,14 @@ import { setLoginState } from "@common/loginSlice";
 import { userState } from "@common/userSlice";
 import { storyData, StoryInfo, updateStory } from "@common/storySlice";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import LoginIndicator from "@components/LoadingIndicator";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 330px;
+  width: 320px;
   margin: 50px 0;
 `;
 
@@ -24,6 +25,7 @@ const MyInfoContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: 100%;
 `;
 
 const ProfileContainer = styled.div`
@@ -144,7 +146,7 @@ const Profile = () => {
   return (
     <Container>
       {isLoading ? (
-        <></>
+        <LoginIndicator />
       ) : (
         <MyInfoContainer>
           <ProfileContainer>
