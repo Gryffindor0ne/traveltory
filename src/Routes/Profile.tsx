@@ -113,6 +113,7 @@ const Profile = () => {
   >([]);
 
   const onLogOutClick = () => {
+    localStorage.clear();
     signOut(authService);
     dispatch(setLoginState(false));
     navigate("/");
@@ -140,7 +141,7 @@ const Profile = () => {
     }
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1500);
   }, [stories, id]);
 
   return (

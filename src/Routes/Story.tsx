@@ -22,6 +22,7 @@ import { storyData, StoryInfo, updateStory } from "@common/storySlice";
 import { userState } from "@common/userSlice";
 import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
 import Likes from "@components/Likes";
+import LoginIndicator from "@components/LoadingIndicator";
 
 const StoryContainer = styled.div`
   display: flex;
@@ -118,6 +119,7 @@ const Story = () => {
 
   const [isEdit, setIsEdit] = useState(false);
   const [currentStory, setCurrentStory] = useState<StoryInfo | undefined>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const q = query(
@@ -137,6 +139,10 @@ const Story = () => {
     if (currentId) {
       setCurrentStory(stories.find((el) => el.id === currentId));
     }
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
   }, [stories, currentId]);
 
   const onDeleteClick = async () => {
@@ -157,6 +163,8 @@ const Story = () => {
     <>
       {isEdit ? (
         <EditStory story={currentStory} setIsEdit={setIsEdit} />
+      ) : isLoading ? (
+        <LoginIndicator />
       ) : (
         <StoryContainer>
           <StoryInfoContainer>

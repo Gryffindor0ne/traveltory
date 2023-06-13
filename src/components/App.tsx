@@ -16,7 +16,7 @@ declare global {
 const { naver } = window;
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setIsLoading] = useState<boolean>(true);
   const dispatch = useAppDispatch();
 
   const naverLogin = new naver.LoginWithNaverId({
@@ -29,9 +29,8 @@ function App() {
     naverLogin.getLoginStatus((status: any) => {
       if (status) {
         dispatch(setLoginState(true));
-
         dispatch(setUser({ ...naverLogin.user }));
-        setLoading(false);
+        setIsLoading(false);
       } else {
         authService.onAuthStateChanged(async (user) => {
           if (user) {
@@ -48,10 +47,10 @@ function App() {
                   "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80",
               })
             );
-            setLoading(false);
+            setIsLoading(false);
           } else {
             dispatch(setLoginState(false));
-            setLoading(false);
+            setIsLoading(false);
           }
         });
       }
