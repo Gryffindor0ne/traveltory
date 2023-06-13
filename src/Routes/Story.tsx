@@ -27,7 +27,7 @@ const StoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 330px;
-  margin: 2rem;
+  margin: 2rem 2rem 7rem;
 `;
 
 const StoryInfoContainer = styled.div`
