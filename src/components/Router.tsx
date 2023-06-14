@@ -10,6 +10,8 @@ import NavBar from "@components/NavBar";
 import { useAppSelector } from "@common/hooks/reduxHooks";
 import { checkLoginState } from "@common/loginSlice";
 import TopButton from "./TopButton";
+import { useState } from "react";
+import LoginIndicator from "@components/LoadingIndicator";
 
 const Container = styled.div`
   display: flex;
@@ -23,6 +25,8 @@ const Container = styled.div`
 `;
 
 const AppRouter = () => {
+  const [loading, setIsLoading] = useState<boolean>(false);
+
   const { loginState } = useAppSelector(checkLoginState);
 
   return (
@@ -33,12 +37,20 @@ const AppRouter = () => {
           {loginState ? (
             <>
               <Route path="/" element={<Main />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route
+                path="/profile"
+                element={<Profile loadingStateControl={setIsLoading} />}
+              />
               <Route path="/story/:id" element={<Story />} />
               <Route path="/story/new" element={<New />} />
             </>
+          ) : loading ? (
+            <Route path="/" element={<LoginIndicator />}></Route>
           ) : (
-            <Route path="/" element={<Auth />} />
+            <Route
+              path="/"
+              element={<Auth loadingStateControl={setIsLoading} />}
+            />
           )}
         </Routes>
         <TopButton />

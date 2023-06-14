@@ -103,7 +103,11 @@ const LogOutBtn = styled.div`
   }
 `;
 
-const Profile = () => {
+const Profile = ({
+  loadingStateControl,
+}: {
+  loadingStateControl: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { stories } = useAppSelector(storyData);
@@ -115,6 +119,7 @@ const Profile = () => {
 
   const onLogOutClick = () => {
     localStorage.clear();
+    loadingStateControl(false);
     signOut(authService);
     dispatch(setLoginState(false));
     navigate("/");

@@ -123,8 +123,13 @@ const SocialLoginImg = styled.img`
   background: #f9a825;
 `;
 
-const Auth = () => {
+const Auth = ({
+  loadingStateControl,
+}: {
+  loadingStateControl: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const onSocialClick = async (e: React.MouseEvent<HTMLElement>) => {
+    loadingStateControl(true);
     const name = (e.currentTarget as HTMLButtonElement).name;
 
     let provider: any;
@@ -137,6 +142,8 @@ const Auth = () => {
   };
 
   const guestLogin = async () => {
+    loadingStateControl(true);
+
     try {
       await signInWithEmailAndPassword(
         authService,
