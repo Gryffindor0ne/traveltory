@@ -35,10 +35,11 @@ const TitleContainer = styled.div`
   margin: 5rem;
 `;
 const Title = styled.div`
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: bold;
   font-family: "DM Serif Display", serif;
   color: white;
+  margin: 0.3rem;
 `;
 
 const AuthBtnContainer = styled.div`
@@ -84,9 +85,9 @@ const GuestLoginBtn = styled.div`
   background: #a33030;
   cursor: pointer;
   width: 14rem;
-  padding: 13px 0px;
+  padding: 18px 0px;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 `;
 
