@@ -26,6 +26,7 @@ const MyInfoContainer = styled.section`
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
+  margin-bottom: 3rem;
 `;
 
 const ProfileContainer = styled.div`
