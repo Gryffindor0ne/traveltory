@@ -5,10 +5,10 @@ import { signOut } from "firebase/auth";
 
 import { authService, dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
-import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
-import { setLoginState } from "@common/loginSlice";
-import { userState } from "@common/userSlice";
-import { storyData, StoryInfo, updateStory } from "@common/storySlice";
+import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
+import { setLoginState } from "@redux/slices/loginSlice";
+import { userState } from "@redux/slices/userSlice";
+import { storyData, StoryInfo, updateStory } from "@redux/slices/storySlice";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import LoginIndicator from "@components/LoadingIndicator";
 

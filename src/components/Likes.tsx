@@ -6,7 +6,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { doc, updateDoc } from "firebase/firestore";
 
 import { dbService } from "@apis/f-base";
-import { StoryInfo } from "@common/storySlice";
+import { StoryInfo } from "@redux/slices/storySlice";
 
 const LikesContainer = styled.div`
   display: flex;

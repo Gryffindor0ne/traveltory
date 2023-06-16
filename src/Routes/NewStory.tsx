@@ -16,8 +16,8 @@ import styled from "styled-components";
 
 import ImageUploadForm from "@components/ImageUploadForm";
 import { dbService } from "@apis/f-base";
-import { useAppSelector } from "@common/hooks/reduxHooks";
-import { userState } from "@common/userSlice";
+import { useAppSelector } from "@redux/hooks/reduxHooks";
+import { userState } from "@redux/slices/userSlice";
 
 const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
   "&:hover": {
@@ -157,7 +157,7 @@ const RegisterBtn = styled.span`
   }
 `;
 
-type StoryData = {
+export type StoryData = {
   category: string;
   title: string;
   content: string;

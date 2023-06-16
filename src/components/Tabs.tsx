@@ -6,8 +6,8 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 import { CategoryInfo } from "./Category";
-import { addCategory, storyData } from "@common/storySlice";
-import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
+import { addCategory, storyData } from "@redux/slices/storySlice";
+import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
 
 const AntTab = styled(Tab)(({ theme }) => ({
   "&:hover": {

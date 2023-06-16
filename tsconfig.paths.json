@@ -6,7 +6,8 @@
       "@components/*": ["components/*"],
       "@routes/*": ["routes/*"],
       "@utils/*": ["utils/*"],
-      "@common/*": ["common/*"]
+      "@common/*": ["common/*"],
+      "@redux/*": ["redux/*"]
     }
   }
 }

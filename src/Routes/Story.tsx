@@ -18,9 +18,9 @@ import { koreanDateFormatter } from "@utils/dateUtils";
 import Tags from "@components/Tags";
 import EditStory from "@components/EditStory";
 import { dbService, storage } from "@apis/f-base";
-import { storyData, StoryInfo, updateStory } from "@common/storySlice";
-import { userState } from "@common/userSlice";
-import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
+import { storyData, StoryInfo, updateStory } from "@redux/slices/storySlice";
+import { userState } from "@redux/slices/userSlice";
+import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
 import Likes from "@components/Likes";
 import LoginIndicator from "@components/LoadingIndicator";
 

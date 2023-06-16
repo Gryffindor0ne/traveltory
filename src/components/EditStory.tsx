@@ -16,7 +16,7 @@ import styled from "styled-components";
 import ImageUploadForm from "@components/ImageUploadForm";
 import { dbService } from "@apis/f-base";
 import { selectList } from "@routes/NewStory";
-import { StoryInfo } from "@common/storySlice";
+import { StoryInfo } from "@redux/slices/storySlice";
 
 const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
   "&:hover": {

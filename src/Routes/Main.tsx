@@ -5,14 +5,14 @@ import styled from "styled-components";
 import { dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
 import Category from "@components/Category";
-import { useAppDispatch, useAppSelector } from "@common/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
 import {
   StoryInfo,
   removeTag,
   removeCategory,
   updateStory,
   storyData,
-} from "@common/storySlice";
+} from "@redux/slices/storySlice";
 
 const Container = styled.div`
   display: flex;
@@ -76,7 +76,7 @@ const Main = () => {
             <ShortStories story={story} key={story.id} />
           ))
         : category.length !== 0 && category !== "total"
-        ? selectedStoriesByCategory.map((story) => (
+        ? selectedStoriesByCategory.map((story: StoryInfo) => (
             <ShortStories story={story} key={story.id} />
           ))
         : stories.map((story) => <ShortStories story={story} key={story.id} />)}

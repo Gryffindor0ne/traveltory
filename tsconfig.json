@@ -17,5 +17,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "craco.config.js", "dateUtils.ts"]
+  "include": ["src", "craco.config.js", "dateUtils.ts", "src/redux"]
 }

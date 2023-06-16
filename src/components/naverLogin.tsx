@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { setUser } from "@common/userSlice";
-import { useAppDispatch } from "@common/hooks/reduxHooks";
-import { setLoginState } from "@common/loginSlice";
+import { setUser } from "@redux/slices/userSlice";
+import { useAppDispatch } from "@redux/hooks/reduxHooks";
+import { setLoginState } from "@redux/slices/loginSlice";
 declare global {
   interface Window {
     naver: any;

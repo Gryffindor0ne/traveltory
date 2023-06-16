@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import AppRouter from "./Router";
 import { authService } from "@apis/f-base";
-import { useAppDispatch } from "@common/hooks/reduxHooks";
-import { setLoginState } from "@common/loginSlice";
-import { setUser } from "@common/userSlice";
+import { useAppDispatch } from "@redux/hooks/reduxHooks";
+import { setLoginState } from "@redux/slices/loginSlice";
+import { setUser } from "@redux/slices/userSlice";
 import LoginIndicator from "@components/LoadingIndicator";
 
 declare global {
