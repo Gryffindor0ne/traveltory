@@ -91,6 +91,9 @@ const ImageUploadBtn = styled.button`
   }
 `;
 
+export const defaultImageURL =
+  "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80";
+
 const UploadImageForm = ({
   imageURL,
   setImageURL,
@@ -101,9 +104,6 @@ const UploadImageForm = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [progressPercent, setProgressPercent] = useState<number>(0);
-
-  const defaultImageURL =
-    "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80";
 
   const onImageChange = (
     e: React.ChangeEvent<EventTarget & HTMLInputElement>

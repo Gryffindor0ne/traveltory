@@ -17,6 +17,7 @@ import ImageUploadForm from "@components/ImageUploadForm";
 import { dbService } from "@apis/f-base";
 import { selectList } from "@routes/NewStory";
 import { StoryInfo } from "@redux/slices/storySlice";
+import { updateTags } from "@common/tags";
 
 const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
   "&:hover": {
@@ -176,27 +177,12 @@ const EditStory = ({
 
   const addTag = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { value } = event.target as HTMLButtonElement;
-
-    const filtered = newStory.tags.filter((el) => el === value);
-
-    if (value !== "" && filtered.length === 0) {
-      setNewStory({
-        ...newStory,
-        tags: [...newStory.tags, value],
-      });
-    }
+    updateTags("ADD", newStory, setNewStory, value);
     event.currentTarget.value = "";
   };
 
   const removeTag = (clickedIndex: number) => {
-    setNewStory(() => {
-      return {
-        ...newStory,
-        tags: newStory.tags.filter((_, index) => {
-          return index !== clickedIndex;
-        }),
-      };
-    });
+    updateTags("REMOVE", newStory, setNewStory, "", clickedIndex);
   };
 
   const handleSelect = (event: SelectChangeEvent) => {

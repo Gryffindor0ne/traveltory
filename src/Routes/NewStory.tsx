@@ -18,6 +18,8 @@ import ImageUploadForm from "@components/ImageUploadForm";
 import { dbService } from "@apis/f-base";
 import { useAppSelector } from "@redux/hooks/reduxHooks";
 import { userState } from "@redux/slices/userSlice";
+import { updateTags } from "@common/tags";
+import { StoryInfo } from "@redux/slices/storySlice";
 
 const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
   "&:hover": {
@@ -157,12 +159,18 @@ const RegisterBtn = styled.span`
   }
 `;
 
-export type StoryData = {
-  category: string;
-  title: string;
-  content: string;
-  tags: string[];
-  likes: string[];
+const initialStoryProps = {
+  category: "",
+  title: "",
+  content: "",
+  tags: [],
+  likes: [],
+  id: "",
+  writtenAt: "",
+  writerId: "",
+  writerNickName: "",
+  writer_profile_image: "",
+  image: "",
 };
 
 export const selectList = [
@@ -176,15 +184,9 @@ export const selectList = [
 
 const NewStory = () => {
   const navigate = useNavigate();
-  const [story, setStory] = useState<StoryData>({
-    category: "",
-    title: "",
-    content: "",
-    tags: [],
-    likes: [],
-  });
+  const [story, setStory] = useState<StoryInfo>(initialStoryProps);
   const [imageURL, setImageURL] = useState<string>("");
-  const { id, nickname, profile_image } = useAppSelector(userState);
+  const { id: writerId, nickname, profile_image } = useAppSelector(userState);
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -197,26 +199,12 @@ const NewStory = () => {
   const addTag = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const { value } = event.target as HTMLButtonElement;
 
-    const filtered = story.tags.filter((el) => el === value);
-
-    if (value !== "" && filtered.length === 0) {
-      setStory({
-        ...story,
-        tags: [...story.tags, value],
-      });
-    }
+    updateTags("ADD", story, setStory, value);
     event.currentTarget.value = "";
   };
 
   const removeTag = (clickedIndex: number) => {
-    setStory(() => {
-      return {
-        ...story,
-        tags: story.tags.filter((_, index) => {
-          return index !== clickedIndex;
-        }),
-      };
-    });
+    updateTags("REMOVE", story, setStory, "", clickedIndex);
   };
 
   const handleSelect = (event: SelectChangeEvent) => {
@@ -230,10 +218,13 @@ const NewStory = () => {
       return;
     }
 
+    const { id, ...theOther } = story;
+    // type을 맞추기 위해 id를 넣었으나 story 등록시 id를 부여받기 위해 id를 제거한다.
+
     const storyObj = {
-      ...story,
+      ...theOther,
       writtenAt: Date.now(),
-      writerId: id,
+      writerId: writerId,
       writerNickName: nickname,
       writer_profile_image: profile_image,
       image: imageURL,
@@ -244,11 +235,8 @@ const NewStory = () => {
       console.log(error);
     }
     setStory({
+      ...initialStoryProps,
       category: "카테고리 선택",
-      title: "",
-      content: "",
-      tags: [],
-      likes: [],
     });
     setImageURL("");
     navigate("/");
@@ -258,10 +246,8 @@ const NewStory = () => {
     <NewStoryContainer>
       <ImageUploadForm imageURL={imageURL} setImageURL={setImageURL} />
       <FormControl variant="standard" sx={{ m: 1, width: "12ch" }}>
-        <InputLabel id="demo-simple-select-standard-label">카테고리</InputLabel>
+        <InputLabel>카테고리</InputLabel>
         <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
           value={story.category}
           label="category"
           name="category"

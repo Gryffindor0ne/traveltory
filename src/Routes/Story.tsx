@@ -23,6 +23,7 @@ import { userState } from "@redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
 import Likes from "@components/Likes";
 import LoginIndicator from "@components/LoadingIndicator";
+import { defaultImageURL } from "@components/ImageUploadForm";
 
 const StoryContainer = styled.div`
   display: flex;
@@ -147,13 +148,13 @@ const Story = () => {
 
   const onDeleteClick = async () => {
     const ok = window.confirm("정말로 이 스토리 삭제를 원합니까?");
+    navigate("/");
     if (ok) {
       await deleteDoc(doc(dbService, "stories", `${currentStory?.id}`));
-      if (currentStory?.image) {
+      if (currentStory?.image && currentStory?.image !== defaultImageURL) {
         const urlRef = ref(storage, currentStory?.image);
         await deleteObject(urlRef);
       }
-      navigate("/");
     }
   };
 
