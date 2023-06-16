@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 import { CategoryInfo } from "./Category";
-import { addCategory, storyData } from "@redux/slices/storySlice";
+import { addCategory, removeTag, storyData } from "@redux/slices/storySlice";
 import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
 
 const AntTab = styled(Tab)(({ theme }) => ({
@@ -26,9 +26,11 @@ const AntTab = styled(Tab)(({ theme }) => ({
 const TabsBtn = ({ categoryList }: { categoryList: CategoryInfo[] }) => {
   const dispatch = useAppDispatch();
   const { category } = useAppSelector(storyData);
-  const [value, setValue] = React.useState(0);
+
+  const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    dispatch(removeTag());
     setValue(newValue);
     dispatch(addCategory(categoryList[newValue].value));
   };
@@ -45,9 +47,7 @@ const TabsBtn = ({ categoryList }: { categoryList: CategoryInfo[] }) => {
         value={value}
         onChange={handleChange}
         variant="scrollable"
-        scrollButtons
-        allowScrollButtonsMobile
-        aria-label="scrollable force tabs example"
+        scrollButtons="auto"
       >
         {categoryList.map((list, idx) => (
           <AntTab key={idx} label={list.name} />

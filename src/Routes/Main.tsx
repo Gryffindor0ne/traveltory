@@ -21,6 +21,13 @@ const Container = styled.div`
   max-width: 320px;
 `;
 
+const DivContainer = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 330px;
+  margin-bottom: 3rem;
+`;
+
 const Main = () => {
   const { stories, tag, category } = useAppSelector(storyData);
 
@@ -70,7 +77,8 @@ const Main = () => {
 
   return (
     <Container>
-      <Category />
+      {tag.length === 0 ? <Category /> : <DivContainer></DivContainer>}
+
       {tag.length !== 0
         ? selectedStoriesByTag.map((story) => (
             <ShortStories story={story} key={story.id} />

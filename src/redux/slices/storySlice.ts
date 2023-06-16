@@ -44,7 +44,7 @@ export const storySlice = createSlice({
       state.category = action.payload;
     },
     removeCategory: (state) => {
-      state.category = "total";
+      state.category = "";
     },
   },
 });
