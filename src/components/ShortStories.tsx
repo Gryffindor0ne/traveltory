@@ -97,6 +97,7 @@ const Content = styled.div`
 
 const TagContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const LikesContainer = styled.div`

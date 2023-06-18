@@ -14,11 +14,11 @@ const TagBtn = styled.button`
   border-radius: 10px;
   background: white;
   color: #ff6e40;
-  width: 4rem;
   height: 1.5rem;
-  font-size: 0.5rem;
+  /* font-size: 0.5rem; */
   font-weight: bold;
-  margin-right: 0.8rem;
+  margin: 0.3rem;
+  padding: 0.9rem 0.8rem;
 
   :hover {
     border: none;

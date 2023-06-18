@@ -108,6 +108,7 @@ const Content = styled.div`
 
 const TagContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
 `;
 
