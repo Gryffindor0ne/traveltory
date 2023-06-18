@@ -76,6 +76,8 @@ const Content = styled.div`
   max-height: 2.4rem;
   margin-right: -1rem;
   padding-right: 1rem;
+  white-space: pre-wrap;
+
   :before {
     content: "...";
     position: absolute;
@@ -150,7 +152,16 @@ const ShortStories = ({ story }: { story: StoryInfo }) => {
           <StoryImg src={story.image} alt={story.writerNickName} />
         )}
         <Title>{story.title}</Title>
-        <Content>{story.content}</Content>
+        <Content>
+          {story?.content.split(`/n`).map((text, idx) => {
+            return (
+              <span key={idx}>
+                {text}
+                <br />
+              </span>
+            );
+          })}
+        </Content>
       </StoryBox>
       <LikesContainer>
         <div>

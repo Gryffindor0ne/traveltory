@@ -90,6 +90,8 @@ const TagInput = styled.input`
 `;
 
 const ContentInput = styled.textarea`
+  resize: none;
+  overflow: hidden;
   height: 20rem;
   border: none;
   border-radius: 10px;

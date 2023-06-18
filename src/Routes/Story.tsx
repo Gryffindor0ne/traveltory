@@ -103,6 +103,7 @@ const Content = styled.div`
   line-height: 1.3rem;
   font-size: 0.8rem;
   color: #9e9e9e;
+  white-space: pre-wrap;
 `;
 
 const TagContainer = styled.div`
@@ -201,7 +202,17 @@ const Story = () => {
             />
           )}
           <Title>{currentStory?.title}</Title>
-          <Content>{currentStory?.content}</Content>
+          <Content>
+            {currentStory?.content.split(`/n`).map((text, idx) => {
+              return (
+                <span key={idx}>
+                  {text}
+                  <br />
+                </span>
+              );
+            })}
+          </Content>
+
           {currentStory?.writerId === id && (
             <EditBtn>
               <span onClick={toggleEdit}>
