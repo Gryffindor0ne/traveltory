@@ -36,8 +36,9 @@ const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
 const EditStoryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 320px;
   margin: 1rem auto 5rem auto;
+  padding: 0.5rem;
 `;
 
 const TagContainer = styled.div`
@@ -106,8 +107,9 @@ const ContentInput = styled.textarea`
 const BtnContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 300px;
-  margin-top: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.5rem;
 `;
 
 const EditBtn = styled.span`
@@ -116,15 +118,15 @@ const EditBtn = styled.span`
   align-items: center;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #ffab91;
+  border: 1px solid #f6b352;
   border-radius: 10px;
   color: #ff8f00;
   font-weight: bold;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   width: 7rem;
   height: 2rem;
-  margin-right: 0.5rem;
-  padding: 8px;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.9rem;
 
   :hover {
     border: none;
@@ -140,14 +142,15 @@ const CancelBtn = styled.span`
   align-items: center;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #ffab91;
+  border: 1px solid #f6b352;
   border-radius: 10px;
   color: #ff8f00;
   font-weight: bold;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   width: 4rem;
   height: 2rem;
-  padding: 8px;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.9rem;
 
   :hover {
     border: none;

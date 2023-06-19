@@ -10,8 +10,6 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faFilePen } from "@fortawesome/free-solid-svg-icons";
 
 import { selectList } from "./NewStory";
 import { koreanDateFormatter } from "@utils/dateUtils";
@@ -30,23 +28,12 @@ const StoryContainer = styled.div`
   flex-direction: column;
   width: 330px;
   margin: 2rem 2rem 7rem;
+  padding: 0.7rem;
 `;
 
 const StoryInfoContainer = styled.div`
   display: flex;
   margin-bottom: 1rem;
-`;
-
-const EditBtn = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  cursor: pointer;
-  margin-top: 2rem;
-  > span {
-    font-size: 1.4rem;
-    color: #90a4ae;
-    margin: 0 0.7rem;
-  }
 `;
 
 const WriterProfileImg = styled.img`
@@ -110,6 +97,61 @@ const TagContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+`;
+
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
+`;
+
+const EditBtn = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #f6b352;
+  border-radius: 10px;
+  color: #ff8f00;
+  font-weight: bold;
+  font-size: 0.9rem;
+  width: 7rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.9rem;
+
+  :hover {
+    border: none;
+    background: #ff8f00;
+    color: white;
+    font-weight: bold;
+  }
+`;
+
+const CancelBtn = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #f6b352;
+  border-radius: 10px;
+  color: #ff8f00;
+  font-weight: bold;
+  font-size: 0.9rem;
+  width: 7rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.9rem;
+
+  :hover {
+    border: none;
+    background: #ff8f00;
+    color: white;
+    font-weight: bold;
+  }
 `;
 
 const Story = () => {
@@ -215,14 +257,10 @@ const Story = () => {
           </Content>
 
           {currentStory?.writerId === id && (
-            <EditBtn>
-              <span onClick={toggleEdit}>
-                <FontAwesomeIcon icon={faFilePen} />
-              </span>
-              <span onClick={onDeleteClick}>
-                <FontAwesomeIcon icon={faTrash} />
-              </span>
-            </EditBtn>
+            <BtnContainer>
+              <EditBtn onClick={toggleEdit}>스토리 편집</EditBtn>
+              <CancelBtn onClick={onDeleteClick}>스토리 삭제</CancelBtn>
+            </BtnContainer>
           )}
         </StoryContainer>
       )}

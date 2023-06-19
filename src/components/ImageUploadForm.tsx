@@ -31,7 +31,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  max-width: 320px;
+  max-width: 330px;
   border: solid 1px #ff8f00;
   border-radius: 1rem;
   margin: 2rem 0;
@@ -92,7 +92,7 @@ const ImageUploadBtn = styled.button`
 `;
 
 export const defaultImageURL =
-  "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80";
+  "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2835&q=80";
 
 const UploadImageForm = ({
   imageURL,

@@ -11,8 +11,9 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 330px;
+  width: 100%;
   margin: 30px 0;
+  padding: 0.5rem;
 `;
 
 const NavigationBox = styled.nav`
@@ -34,8 +35,9 @@ const LogoImg = styled.img`
 `;
 
 const Icon = styled.li`
-  font-size: 1.7rem;
-  margin-left: 2rem;
+  font-size: 1.3rem;
+  margin-left: 2.5rem;
+  margin-right: 0.5rem;
 `;
 
 function NavBar() {

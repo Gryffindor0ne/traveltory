@@ -91,7 +91,6 @@ const TagInput = styled.input`
 
 const ContentInput = styled.textarea`
   resize: none;
-  overflow: hidden;
   height: 20rem;
   border: none;
   border-radius: 10px;
@@ -110,24 +109,26 @@ const ContentInput = styled.textarea`
 const BtnContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 300px;
-  margin-top: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.5rem;
 `;
 
-const BackBtn = styled.span`
+const RegisterBtn = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #ffab91;
+  border: 1px solid #f6b352;
   border-radius: 10px;
   color: #ff8f00;
   font-weight: bold;
-  font-size: 0.7rem;
-  width: 4rem;
+  font-size: 0.9rem;
+  width: 7rem;
   height: 2rem;
-  padding: 8px;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.9rem;
 
   :hover {
     border: none;
@@ -137,21 +138,21 @@ const BackBtn = styled.span`
   }
 `;
 
-const RegisterBtn = styled.span`
+const CancelBtn = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #ffab91;
+  border: 1px solid #f6b352;
   border-radius: 10px;
   color: #ff8f00;
   font-weight: bold;
-  font-size: 0.7rem;
-  width: 7rem;
+  font-size: 0.9rem;
+  width: 4rem;
   height: 2rem;
-  padding: 8px;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0.9rem;
 
   :hover {
     border: none;
@@ -308,14 +309,14 @@ const NewStory = () => {
         onChange={onChange}
       />
       <BtnContainer>
-        <RegisterBtn onClick={onSubmit}>새 스토리 등록</RegisterBtn>
-        <BackBtn
+        <RegisterBtn onClick={onSubmit}>스토리 등록</RegisterBtn>
+        <CancelBtn
           onClick={() => {
             navigate("/");
           }}
         >
-          <span>나가기</span>
-        </BackBtn>
+          <span>취소</span>
+        </CancelBtn>
       </BtnContainer>
     </NewStoryContainer>
   );
