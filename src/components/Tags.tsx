@@ -18,7 +18,7 @@ const TagBtn = styled.button`
   /* font-size: 0.5rem; */
   font-weight: bold;
   margin: 0.3rem;
-  padding: 0.9rem 0.8rem;
+  padding: 0.8rem 0.7rem;
 
   :hover {
     border: none;

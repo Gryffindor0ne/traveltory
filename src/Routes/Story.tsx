@@ -22,17 +22,34 @@ import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
 import Likes from "@components/Likes";
 import LoginIndicator from "@components/LoadingIndicator";
 import { defaultImageURL } from "@components/ImageUploadForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const StoryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 330px;
-  margin: 2rem 2rem 7rem;
+  width: 320px;
+  margin: 0 2rem 7rem;
   padding: 0.7rem;
+`;
+
+const PreviousBtnBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  color: #ff8f00;
+`;
+const PreviousBtn = styled.span`
+  > svg {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+  }
 `;
 
 const StoryInfoContainer = styled.div`
   display: flex;
+  width: 100%;
   margin-bottom: 1rem;
 `;
 
@@ -50,7 +67,7 @@ const StoryInfoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 13rem;
+  width: 100%;
   margin-left: 0.3rem;
 
   > div {
@@ -70,6 +87,9 @@ const StoryInfoBox = styled.div`
 
 const StoryContentBox = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 0.5rem;
 `;
 
 const StoryImg = styled.img`
@@ -212,6 +232,12 @@ const Story = () => {
         <LoginIndicator />
       ) : (
         <StoryContainer>
+          <PreviousBtnBox>
+            <PreviousBtn onClick={() => navigate(-1)}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </PreviousBtn>
+            뒤로 가기
+          </PreviousBtnBox>
           <StoryInfoContainer>
             <WriterProfileImg
               src={currentStory?.writer_profile_image}

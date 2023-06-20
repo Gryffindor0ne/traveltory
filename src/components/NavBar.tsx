@@ -28,6 +28,7 @@ const MenuBar = styled.ul`
   justify-content: space-evenly;
   align-items: center;
 `;
+
 const LogoImg = styled.img`
   width: 3rem;
   height: 3rem;
