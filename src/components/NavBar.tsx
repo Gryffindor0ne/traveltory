@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faPen } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import { removeCategory, removeTag } from "@redux/slices/storySlice";
+import {
+  addCategory,
+  removeCategory,
+  removeTag,
+} from "@redux/slices/storySlice";
 import { useAppDispatch } from "@redux/hooks/reduxHooks";
 
 const Container = styled.div`
@@ -52,7 +56,12 @@ function NavBar() {
             to="/"
             onClick={() => {
               dispatch(removeTag());
-              dispatch(removeCategory());
+              dispatch(
+                addCategory({
+                  name: "total",
+                  value: 0,
+                })
+              );
             }}
           >
             <LogoImg src="/images/logo.png" alt="logo" />
