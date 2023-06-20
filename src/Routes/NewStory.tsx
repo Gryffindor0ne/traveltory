@@ -38,8 +38,9 @@ const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
 const NewStoryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
   margin: 1rem auto 5rem auto;
+  padding: 1rem;
 `;
 
 const TagContainer = styled.div`

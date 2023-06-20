@@ -20,7 +20,7 @@ window.addEventListener("resize", setScreenSize);
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   height: calc(var(--vh, 1vh) * 100);
   justify-content: center;
   align-items: center;

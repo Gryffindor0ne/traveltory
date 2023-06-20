@@ -28,7 +28,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 const StoryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 100%;
   margin: 0 2rem 7rem;
   padding: 0.7rem;
 `;
@@ -110,6 +110,7 @@ const Content = styled.div`
   line-height: 1.3rem;
   font-size: 0.8rem;
   color: #9e9e9e;
+  width: 100%;
   white-space: pre-wrap;
 `;
 

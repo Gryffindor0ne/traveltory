@@ -13,7 +13,7 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   margin: 30px 0;
-  padding: 0.5rem;
+  padding: 1rem;
 `;
 
 const NavigationBox = styled.nav`
@@ -21,6 +21,7 @@ const NavigationBox = styled.nav`
   width: 100%;
   justify-content: space-between;
   margin-top: 1rem;
+  padding: 0 1rem;
 `;
 
 const MenuBar = styled.ul`

@@ -44,12 +44,18 @@ const TabsBtn = ({ categoryList }: { categoryList: CategoryInfo[] }) => {
   }, [category]);
 
   return (
-    <Box sx={{ maxWidth: 330, bgcolor: "background.paper" }}>
+    <Box
+      sx={{
+        maxWidth: { sm: 480, xs: 320 },
+        bgcolor: "background.paper",
+      }}
+    >
       <Tabs
         value={value}
         onChange={handleChange}
         variant="scrollable"
         scrollButtons="auto"
+        // allowScrollButtonsMobile
       >
         {categoryList.map((list, idx) => (
           <AntTab key={idx} label={list.name} />

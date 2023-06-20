@@ -17,8 +17,9 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 320px;
+  width: 100%;
   margin: 50px 0;
+  padding: 1.2rem;
 `;
 
 const MyInfoContainer = styled.section`

@@ -69,7 +69,7 @@ const Title = styled.h3`
 const Content = styled.div`
   font-size: 0.9rem;
   color: #9e9e9e;
-  width: calc(340px - 1rem);
+  width: 100%;
   overflow: hidden;
   position: relative;
   line-height: 1.2rem;

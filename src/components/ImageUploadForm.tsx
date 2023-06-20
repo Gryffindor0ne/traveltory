@@ -31,10 +31,11 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  max-width: 330px;
+  min-width: 320px;
   border: solid 1px #ff8f00;
   border-radius: 1rem;
   margin: 2rem 0;
+  padding: 1rem;
 `;
 
 const FileInput = styled.input`
