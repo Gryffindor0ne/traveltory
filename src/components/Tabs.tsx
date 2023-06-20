@@ -27,16 +27,18 @@ const TabsBtn = ({ categoryList }: { categoryList: CategoryInfo[] }) => {
   const dispatch = useAppDispatch();
   const { category } = useAppSelector(storyData);
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(category.value);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     dispatch(removeTag());
     setValue(newValue);
-    dispatch(addCategory(categoryList[newValue].value));
+    dispatch(
+      addCategory({ name: categoryList[newValue].value, value: newValue })
+    );
   };
 
   useEffect(() => {
-    if (category === "total") {
+    if (category.name === "total") {
       setValue(0);
     }
   }, [category]);

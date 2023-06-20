@@ -54,8 +54,8 @@ const StoryInfoContainer = styled.div`
 `;
 
 const WriterProfileImg = styled.img`
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border: none;
   border-radius: 50%;
   background: #ffab91;

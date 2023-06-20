@@ -15,16 +15,21 @@ export type StoryInfo = {
   writer_profile_image: string;
 };
 
+type categoryProp = {
+  name: string;
+  value: number;
+};
+
 export type StoryDataType = {
   stories: StoryInfo[];
   tag: string;
-  category: string;
+  category: categoryProp;
 };
 
 const initialState: StoryDataType = {
   stories: [],
   tag: "",
-  category: "total",
+  category: { name: "total", value: 0 },
 };
 
 export const storySlice = createSlice({
@@ -40,11 +45,11 @@ export const storySlice = createSlice({
     removeTag: (state) => {
       state.tag = "";
     },
-    addCategory: (state, action: PayloadAction<string>) => {
+    addCategory: (state, action: PayloadAction<categoryProp>) => {
       state.category = action.payload;
     },
     removeCategory: (state) => {
-      state.category = "";
+      state.category = { name: "", value: 0 };
     },
   },
 });

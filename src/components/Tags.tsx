@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { useAppDispatch } from "@redux/hooks/reduxHooks";
-import { addTag } from "@redux/slices/storySlice";
+import { addTag, removeCategory } from "@redux/slices/storySlice";
 
 const TagBtn = styled.button`
   cursor: pointer;
@@ -35,7 +35,9 @@ const Tags = ({ tags }: { tags: string[] | undefined }) => {
   const tagClick = (event: React.MouseEvent<HTMLElement>) => {
     const target = event.target as HTMLButtonElement;
 
+    console.log(target);
     if (target) {
+      dispatch(removeCategory());
       dispatch(addTag(target.innerHTML));
       navigate("/");
     }

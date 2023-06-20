@@ -90,12 +90,12 @@ const Main = () => {
   }, [tag, dispatch, stories]);
 
   useEffect(() => {
-    if (category) {
-      if (category === "total") {
+    if (category.name) {
+      if (category.name === "total") {
         setSelectedStoriesByCategory([]);
       } else {
         setSelectedStoriesByCategory(
-          stories.filter((el) => el.category.includes(category))
+          stories.filter((el) => el.category.includes(category.name))
         );
         dispatch(removeTag());
       }
@@ -131,7 +131,7 @@ const Main = () => {
         ? selectedStoriesByTag.map((story) => (
             <ShortStories story={story} key={story.id} />
           ))
-        : category.length !== 0 && category !== "total"
+        : category.name.length !== 0 && category.name !== "total"
         ? selectedStoriesByCategory.map((story: StoryInfo) => (
             <ShortStories story={story} key={story.id} />
           ))
