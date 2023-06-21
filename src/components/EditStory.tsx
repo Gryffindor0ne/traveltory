@@ -36,9 +36,9 @@ const CustomMenuItem = styledM(MenuItem)(({ theme }) => ({
 const EditStoryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 320px;
-  margin: 1rem auto 5rem auto;
-  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 5rem;
+  padding: 1rem 2rem;
 `;
 
 const TagContainer = styled.div`
@@ -93,7 +93,7 @@ const ContentInput = styled.textarea`
   border: none;
   border-radius: 10px;
   background: #ffe0b2;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   outline: none;
   line-height: 1.7rem;
   padding: 1rem;
@@ -230,7 +230,7 @@ const EditStory = ({
       <Box
         component="form"
         sx={{
-          "& > :not(style)": { m: 1, width: "28ch" },
+          "& > :not(style)": { m: 1, width: "20ch" },
         }}
         noValidate
         autoComplete="off"

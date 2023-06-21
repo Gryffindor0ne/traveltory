@@ -123,7 +123,8 @@ const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
 `;
 
 const EditBtn = styled.span`
@@ -140,7 +141,7 @@ const EditBtn = styled.span`
   width: 7rem;
   height: 2rem;
   margin: 0 0.5rem;
-  padding: 0.5rem 0.9rem;
+  padding: 1rem 0.3rem;
 
   :hover {
     border: none;
@@ -164,7 +165,7 @@ const CancelBtn = styled.span`
   width: 7rem;
   height: 2rem;
   margin: 0 0.5rem;
-  padding: 0.5rem 0.9rem;
+  padding: 1rem 0.3rem;
 
   :hover {
     border: none;

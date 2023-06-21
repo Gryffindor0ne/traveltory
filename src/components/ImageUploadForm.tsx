@@ -31,11 +31,10 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  min-width: 320px;
   border: solid 1px #ff8f00;
   border-radius: 1rem;
   margin: 2rem 0;
-  padding: 1rem;
+  padding: 0.5rem;
 `;
 
 const FileInput = styled.input`
@@ -43,32 +42,36 @@ const FileInput = styled.input`
 `;
 
 const ImageBox = styled.div`
-  margin-left: 1rem;
+  width: 100%;
+
   > svg {
-    margin-left: 3rem;
+    width: 100%;
+    margin: 2rem 0;
+    color: #ff8f00;
   }
   > img {
     border-radius: 10px;
-    width: 10rem;
-    height: 7rem;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 `;
 
 const ImageUploadContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 10rem;
+  height: 100%;
+  padding: 0.7rem;
 `;
 
 const ImageBtns = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
-  width: 10rem;
+  margin-top: 1rem;
 `;
 
 const ImageUploadBtn = styled.button`
@@ -79,10 +82,10 @@ const ImageUploadBtn = styled.button`
   border-radius: 10px;
   color: #ff8f00;
   font-weight: bold;
-  font-size: 0.5rem;
-  width: 6rem;
-  padding: 6px;
-  margin: 0.5rem;
+  font-size: 0.7rem;
+  width: 5rem;
+  padding: 0.4rem 0.1rem;
+  margin: 0.2rem 0.5rem;
 
   :hover {
     border: none;
@@ -161,7 +164,7 @@ const UploadImageForm = ({
       />
       <ImageUploadContainer>
         <ImageBox>
-          {!imageURL && <FontAwesomeIcon icon={faImage} size="3x" />}
+          {!imageURL && <FontAwesomeIcon icon={faImage} size="4x" />}
           {imageURL &&
             (imageURL.includes("firebasestorage") ? (
               <img src={imageURL} alt={imageURL.split("/")[7].split("?")[0]} />
@@ -171,7 +174,7 @@ const UploadImageForm = ({
         </ImageBox>
         <ImageBtns>
           <ImageUploadBtn onClick={onDefaultImageButtonClick}>
-            기본 이미지 사용
+            기본 이미지
           </ImageUploadBtn>
           <ImageUploadBtn onClick={onUploadImageButtonClick}>
             이미지 업로드
