@@ -39,7 +39,6 @@ const HomeBtn = styled.span`
 const MyInfoContainer = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   width: 100%;
   margin-bottom: 3rem;
 `;
@@ -49,8 +48,14 @@ const ProfileContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 2rem 0 3rem;
+  margin: 3rem 0;
   padding: 0 1rem;
+`;
+
+const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const NickName = styled.div`
@@ -60,6 +65,7 @@ const NickName = styled.div`
 `;
 const Email = styled.div`
   font-size: 0.9rem;
+  margin-bottom: 0.8rem;
 `;
 
 const ProfileImg = styled.img`
@@ -99,25 +105,9 @@ const Line = styled.div`
 `;
 
 const LogOutBtn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  border: 1px solid #ffab91;
-  border-radius: 10px;
-  color: #ff8f00;
-  font-weight: bold;
-  font-size: 1.1rem;
-  width: 7rem;
-  height: 2.5rem;
-  margin-top: 3rem;
-
-  :hover {
-    border: none;
-    background: #ff8f00;
-    color: white;
-    font-weight: bold;
-  }
+  color: #6d819c;
+  font-size: 0.9rem;
 `;
 
 const Profile = ({
@@ -186,10 +176,11 @@ const Profile = ({
 
           <MyInfoContainer>
             <ProfileContainer>
-              <div>
+              <ProfileInfo>
                 <NickName>{nickname}</NickName>
                 <Email>{email}</Email>
-              </div>
+                <LogOutBtn onClick={onLogOutClick}>로그아웃</LogOutBtn>
+              </ProfileInfo>
               {profile_image && <ProfileImg src={profile_image} />}
             </ProfileContainer>
             <MyStoryContainer>
@@ -203,8 +194,6 @@ const Profile = ({
                 <Text>작성한 스토리가 없습니다.</Text>
               )}
             </MyStoryContainer>
-
-            <LogOutBtn onClick={onLogOutClick}>로그아웃</LogOutBtn>
           </MyInfoContainer>
         </>
       )}

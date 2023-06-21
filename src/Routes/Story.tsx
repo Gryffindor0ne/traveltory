@@ -77,7 +77,7 @@ const StoryInfoBox = styled.div`
   }
   > span {
     font-size: 0.8rem;
-    color: #90a4ae;
+    color: #6d819c;
     > span {
       margin-right: 1.2rem;
     }
@@ -108,7 +108,7 @@ const Title = styled.div`
 const Content = styled.div`
   line-height: 1.5rem;
   font-size: 0.9rem;
-  color: #9e9e9e;
+  color: #444f59;
   width: 100%;
   white-space: pre-wrap;
 `;

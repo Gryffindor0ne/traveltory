@@ -37,7 +37,8 @@ const StoryInfoBox = styled.div`
   }
   > span {
     font-size: 0.8rem;
-    color: #90a4ae;
+    color: #6d819c;
+
     > span {
       margin-right: 1rem;
     }
@@ -68,7 +69,7 @@ const Title = styled.div`
 
 const Content = styled.div`
   font-size: 0.9rem;
-  color: #9e9e9e;
+  color: #6d819c;
   width: 100%;
   overflow: hidden;
   position: relative;
