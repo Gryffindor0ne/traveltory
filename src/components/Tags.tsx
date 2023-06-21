@@ -15,7 +15,6 @@ const TagBtn = styled.button`
   background: white;
   color: #ff6e40;
   height: 1.5rem;
-  /* font-size: 0.5rem; */
   font-weight: bold;
   margin: 0.3rem;
   padding: 0.8rem 0.7rem;
@@ -35,7 +34,6 @@ const Tags = ({ tags }: { tags: string[] | undefined }) => {
   const tagClick = (event: React.MouseEvent<HTMLElement>) => {
     const target = event.target as HTMLButtonElement;
 
-    console.log(target);
     if (target) {
       dispatch(removeCategory());
       dispatch(addTag(target.innerHTML));

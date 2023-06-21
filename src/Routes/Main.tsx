@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import styled from "styled-components";
 
@@ -15,20 +16,19 @@ import {
 } from "@redux/slices/storySlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 330px;
-  padding: 2rem;
+  min-width: 310px;
+  padding: 1rem 2rem;
 `;
 
 const HomeBtnBox = styled.div`
   display: flex;
   align-items: center;
-  margin: 0.5rem 0;
+  margin-bottom: 1.5rem;
   color: #ff8f00;
 `;
 const HomeBtn = styled.span`
@@ -43,7 +43,7 @@ const TagNameBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0;
+  margin: 0.8rem 0 2rem;
 `;
 
 const TagName = styled.div`

@@ -29,8 +29,8 @@ const StoryContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 2rem 7rem;
-  padding: 0.7rem;
+  margin-bottom: 7rem;
+  padding: 1rem 2rem;
 `;
 
 const PreviousBtnBox = styled.div`
@@ -72,8 +72,7 @@ const StoryInfoBox = styled.div`
 
   > div {
     font-weight: bold;
-    font-size: 0.9rem;
-
+    font-size: 1.2rem;
     margin-bottom: 0.6rem;
   }
   > span {
@@ -107,8 +106,8 @@ const Title = styled.div`
 `;
 
 const Content = styled.div`
-  line-height: 1.3rem;
-  font-size: 0.8rem;
+  line-height: 1.5rem;
+  font-size: 0.9rem;
   color: #9e9e9e;
   width: 100%;
   white-space: pre-wrap;

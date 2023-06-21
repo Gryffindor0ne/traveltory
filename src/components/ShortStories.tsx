@@ -32,8 +32,7 @@ const StoryInfoBox = styled.div`
   margin-left: 0.5rem;
   > div {
     font-weight: bold;
-    font-size: 0.9rem;
-
+    font-size: 1.2rem;
     margin-bottom: 0.6rem;
   }
   > span {
@@ -58,12 +57,13 @@ const StoryBox = styled.div`
   margin: 1rem 0;
 `;
 
-const Title = styled.h3`
+const Title = styled.div`
+  font-size: 1.2rem;
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 `;
 
 const Content = styled.div`
@@ -72,7 +72,7 @@ const Content = styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
-  line-height: 1.2rem;
+  line-height: 1.3rem;
   max-height: 2.4rem;
   margin-right: -1rem;
   padding-right: 1rem;

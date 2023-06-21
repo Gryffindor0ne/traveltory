@@ -46,6 +46,7 @@ const TabsBtn = ({ categoryList }: { categoryList: CategoryInfo[] }) => {
   return (
     <Box
       sx={{
+        minWidth: { sm: 480, xs: 280 },
         maxWidth: { sm: 480, xs: 320 },
         bgcolor: "background.paper",
       }}

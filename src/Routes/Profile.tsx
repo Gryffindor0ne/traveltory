@@ -12,14 +12,28 @@ import { storyData, StoryInfo, updateStory } from "@redux/slices/storySlice";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import LoginIndicator from "@components/LoadingIndicator";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  margin: 50px 0;
-  padding: 1.2rem;
+  padding: 1rem 2rem;
+`;
+
+const HomeBtnBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  color: #ff8f00;
+`;
+const HomeBtn = styled.span`
+  > svg {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+  }
 `;
 
 const MyInfoContainer = styled.section`
@@ -35,16 +49,17 @@ const ProfileContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 3rem;
+  margin: 2rem 0 3rem;
+  padding: 0 1rem;
 `;
 
 const NickName = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
   margin-bottom: 0.9rem;
 `;
 const Email = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 `;
 
 const ProfileImg = styled.img`
@@ -64,6 +79,7 @@ const Title = styled.div`
   font-size: 1.1rem;
   font-weight: bold;
   color: #ff8f00;
+  margin-left: 0.3rem;
   margin-bottom: 0.5rem;
 `;
 
@@ -151,33 +167,46 @@ const Profile = ({
     }, 1500);
   }, [stories, id]);
 
+  const homeBtn = () => {
+    navigate("/");
+  };
+
   return (
     <Container>
       {isLoading ? (
         <LoginIndicator />
       ) : (
-        <MyInfoContainer>
-          <ProfileContainer>
-            <div>
-              <NickName>{nickname}</NickName>
-              <Email>{email}</Email>
-            </div>
-            {profile_image && <ProfileImg src={profile_image} />}
-          </ProfileContainer>
-          <MyStoryContainer>
-            <Title>내가 작성한 스토리</Title>
-            <Line></Line>
-            {selectedStoriesByMine?.length !== 0 ? (
-              selectedStoriesByMine?.map((story) => (
-                <ShortStories story={story} key={story.id} />
-              ))
-            ) : (
-              <Text>작성한 스토리가 없습니다.</Text>
-            )}
-          </MyStoryContainer>
+        <>
+          <HomeBtnBox>
+            <HomeBtn onClick={homeBtn}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </HomeBtn>
+            뒤로 가기
+          </HomeBtnBox>
 
-          <LogOutBtn onClick={onLogOutClick}>로그아웃</LogOutBtn>
-        </MyInfoContainer>
+          <MyInfoContainer>
+            <ProfileContainer>
+              <div>
+                <NickName>{nickname}</NickName>
+                <Email>{email}</Email>
+              </div>
+              {profile_image && <ProfileImg src={profile_image} />}
+            </ProfileContainer>
+            <MyStoryContainer>
+              <Title>내가 작성한 스토리</Title>
+              <Line></Line>
+              {selectedStoriesByMine?.length !== 0 ? (
+                selectedStoriesByMine?.map((story) => (
+                  <ShortStories story={story} key={story.id} />
+                ))
+              ) : (
+                <Text>작성한 스토리가 없습니다.</Text>
+              )}
+            </MyStoryContainer>
+
+            <LogOutBtn onClick={onLogOutClick}>로그아웃</LogOutBtn>
+          </MyInfoContainer>
+        </>
       )}
     </Container>
   );
