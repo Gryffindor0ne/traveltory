@@ -13,9 +13,9 @@
 <br>
 
 <p>
-<img src ="https://user-images.githubusercontent.com/79234473/213435823-1beee07f-631a-4c49-971c-269d834601a0.gif" width="270" height="550"/>
+<img src ="https://private-user-images.githubusercontent.com/79234473/247844006-ca84afbd-3cec-475e-9925-610ab628457d.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg3NDE2MjUyLCJuYmYiOjE2ODc0MTU5NTIsInBhdGgiOiIvNzkyMzQ0NzMvMjQ3ODQ0MDA2LWNhODRhZmJkLTNjZWMtNDc1ZS05OTI1LTYxMGFiNjI4NDU3ZC5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjIyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYyMlQwNjM5MTJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05MGM0NTZkM2E0OTYzZmQ3NTljOWNjOGFjNmE5OWYzODIxZmFlZWY5YTY2OWRlYjdmZjNlYjYxYTFiNzFjODY0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.v7c_vfKCeTWahHURY5i-R4r-AoApxW8N381ygWlKMEA" width="360" height="600"/>
  &nbsp; &nbsp; &nbsp;
-<img src ="https://user-images.githubusercontent.com/79234473/213436297-d7faaa4c-eec3-47c6-90dd-4f003348db56.gif" width="270" height="550"/>
+<img src ="https://private-user-images.githubusercontent.com/79234473/247844076-e360263b-e357-4299-8407-c1e17cafe2dd.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg3NDE3MTY4LCJuYmYiOjE2ODc0MTY4NjgsInBhdGgiOiIvNzkyMzQ0NzMvMjQ3ODQ0MDc2LWUzNjAyNjNiLWUzNTctNDI5OS04NDA3LWMxZTE3Y2FmZTJkZC5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjIyJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYyMlQwNjU0MjhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hNzVkYmRiZjMzMjA4Mzg5Nzk0Y2RlNTk3ODQ1NTRiYmZlOTc3ODk4MjE1YzQxODU2ZmRlYmY2NjE3MWQ0N2YyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.tNtnQ1FNAHMyLzkdqHIxJvTWTAVsjqm1UHH4I3HSXzE" width="360" height="600"/>
 </p>
 
 <br>
@@ -59,17 +59,21 @@ npm run start
 
 - 마이 트레블토리 앱의 메인 페이지입니다.
 
-- 카테고리 클릭시 선택한 카테고리에 해당하는 스토리만 보여집니다.
+- 스토리 목록을 최신순으로 간략하게 보여줍니다.
+
+  - 스토리 목록의 이미지, 제목, 내용 부분 클릭시 해당 스토리의 상세페이지로 이동합니다.
+
+- `카테고리` 클릭시 선택한 카테고리에 해당하는 스토리만 보여집니다.
 
   - 카테고리의 기본 값은 '전체'입니다.
 
   - 카테고리는 '국내여행', '해외여행', '당일치기', '홀로가기', '함께가기', '여행노하우' 로 구성되어 있습니다.
 
-- 스토리 목록을 최신순으로 간략하게 보여줍니다.
+- `태그` 를 클릭하면 해당 태그가 포함된 스토리만 볼 수 있습니다.
 
-  - 스토리 목록의 이미지, 제목, 내용 부분 클릭시 해당 스토리의 상세페이지로 이동합니다.
+  - 선택된 태그명이 상단에 표시되며 해당 태그가 포함된 스토리만 나타납니다.
 
-  - 스토리 목록의 태그를 클릭하면 해당 태그가 포함된 스토리만 필터링됩니다.
+  - 태그를 선택하면 카테고리 바는 사라집니다.
 
 ### 스토리 상세페이지 ("/story/[해당 스토리 id]")
 
@@ -107,9 +111,9 @@ npm run start
 
 - 프로필 페이지에서는 유저 닉네임과 이메일, 프로필 사진이 보여집니다.
 
-- 유저가 작성한 스토리가 있다면 해당 스토리 목록이 보여지고, 없다면 '작성한 스토리가 없습니다.' 가 보여집니다.
+- `로그아웃` 버튼은 유저 이메일 아래 존재하며 클릭시 로그아웃됩니다.
 
-- 페이지의 최하단에 `로그아웃` 버튼이 존재하며 클릭시 로그아웃됩니다.
+- 유저가 작성한 스토리가 있다면 해당 스토리 목록이 보여지고, 없다면 `작성한 스토리가 없습니다.` 가 보여집니다.
 
 ### 메뉴바
 
