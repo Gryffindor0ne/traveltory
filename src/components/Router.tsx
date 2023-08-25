@@ -6,12 +6,12 @@ import Main from "@routes/Main";
 import Profile from "@routes/Profile";
 import New from "@routes/NewStory";
 import Story from "@routes/Story";
-import NavBar from "@components/NavBar";
+import NavBar from "@components/layout/NavBar";
 import { useAppSelector } from "@redux/hooks/reduxHooks";
 import { checkLoginState } from "@redux/slices/loginSlice";
-import TopButton from "./TopButton";
+import TopButton from "./layout/TopButton";
 import { useState } from "react";
-import LoginIndicator from "@components/LoadingIndicator";
+import LoginIndicator from "@components/layout/LoadingIndicator";
 
 const Container = styled.div`
   display: flex;

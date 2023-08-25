@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { dbService } from "@apis/f-base";
 import ShortStories from "@components/ShortStories";
-import Category from "@components/Category";
+import Category from "@components/layout/Category";
 import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
 import {
   StoryInfo,

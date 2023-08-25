@@ -5,7 +5,7 @@ import { authService } from "@apis/f-base";
 import { useAppDispatch } from "@redux/hooks/reduxHooks";
 import { setLoginState } from "@redux/slices/loginSlice";
 import { setUser } from "@redux/slices/userSlice";
-import LoginIndicator from "@components/LoadingIndicator";
+import LoginIndicator from "@components/layout/LoadingIndicator";
 
 declare global {
   interface Window {

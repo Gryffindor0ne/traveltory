@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 import { selectList } from "@routes/NewStory";
 import { koreanDateFormatter } from "@utils/dateUtils";
-import Tags from "./Tags";
-import Likes from "./Likes";
+import Tags from "./layout/Tags";
+import Likes from "./layout/Likes";
 import { useAppSelector } from "@redux/hooks/reduxHooks";
 import { StoryInfo } from "@redux/slices/storySlice";
 import { userState } from "@redux/slices/userSlice";

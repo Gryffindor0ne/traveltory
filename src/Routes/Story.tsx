@@ -13,15 +13,15 @@ import styled from "styled-components";
 
 import { selectList } from "./NewStory";
 import { koreanDateFormatter } from "@utils/dateUtils";
-import Tags from "@components/Tags";
+import Tags from "@components/layout/Tags";
 import EditStory from "@components/EditStory";
 import { dbService, storage } from "@apis/f-base";
 import { storyData, StoryInfo, updateStory } from "@redux/slices/storySlice";
 import { userState } from "@redux/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@redux/hooks/reduxHooks";
-import Likes from "@components/Likes";
-import LoginIndicator from "@components/LoadingIndicator";
-import { defaultImageURL } from "@components/ImageUploadForm";
+import Likes from "@components/layout/Likes";
+import LoginIndicator from "@components/layout/LoadingIndicator";
+import { defaultImageURL } from "@components/layout/ImageUploadForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 

@@ -10,7 +10,7 @@ import { setLoginState } from "@redux/slices/loginSlice";
 import { userState } from "@redux/slices/userSlice";
 import { storyData, StoryInfo, updateStory } from "@redux/slices/storySlice";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import LoginIndicator from "@components/LoadingIndicator";
+import LoginIndicator from "@components/layout/LoadingIndicator";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";

@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import ImageUploadForm from "@components/ImageUploadForm";
+import ImageUploadForm from "@components/layout/ImageUploadForm";
 import { dbService } from "@apis/f-base";
 import { selectList } from "@routes/NewStory";
 import { StoryInfo } from "@redux/slices/storySlice";
